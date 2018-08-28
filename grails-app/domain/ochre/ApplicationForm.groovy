@@ -9,27 +9,18 @@ class ApplicationForm {
         shippingDetails()
         researchFunder()
         contactPersonQuotationFunding()
-        ethicalApprovalReferenceNo()
-        ethicalApprovalTitle()
-        ethicalApprovalDate()
-        ethicalApprovalExpiryDate()
-        consentForUseOfData()
-        randDApprovalBody()
-        randDApprovalReferenceNo()
-        randDApprovalOtherInformation widget: 'textarea'
+        ethicalApproval()
+        consentForUseInResearch()
+        randDApproval()
         registrationOnPortfolioName()
         sponsorOrganisation()
         mTAArranged widget: 'textarea'
-        researchProjectTitle()
-        expectedDurationOfProject()
-        projectDoneInAccreditedLab()
-        projectLaySummary widget: 'textarea'
-        projectAimsAndObjectives widget: 'textarea'
-        projectNHSPathologist()
-        sampleRequirements widget: 'textarea'
-        detailsOfHistologyRequiredFromOCHRe widget: 'textarea'
+        trial()
+        mTAOrCTA()
+        sample()
         howMaterialUsed widget: 'textarea'
         dataRequirements widget: 'textarea'
+        clinicalTrialForm(nullable: true)
     }
 
     Person leadApplicant
@@ -37,27 +28,19 @@ class ApplicationForm {
     Person shippingDetails
     ResearchFunder researchFunder
     Person contactPersonQuotationFunding
-    String ethicalApprovalReferenceNo
-    String ethicalApprovalTitle
-    Date ethicalApprovalDate
-    Date ethicalApprovalExpiryDate
-    String consentForUseOfData
-    String randDApprovalBody
-    String randDApprovalReferenceNo
-    String randDApprovalOtherInformation
+    EthicalApproval ethicalApproval
+    ConsentForUseInResearch consentForUseInResearch
+    RandDApproval randDApproval
+    Trial trial
     String registrationOnPortfolioName
     String sponsorOrganisation
     String mTAArranged
-    String researchProjectTitle
-    String expectedDurationOfProject
-    String projectDoneInAccreditedLab
-    String projectLaySummary
-    String projectAimsAndObjectives
-    String projectNHSPathologist
-    String sampleRequirements
-    String detailsOfHistologyRequiredFromOCHRe
+    String mTAOrCTA
+    String timePoint
+    Sample sample
     String howMaterialUsed
     String dataRequirements
+    String clinicalTrialForm
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {

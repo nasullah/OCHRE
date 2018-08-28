@@ -24,6 +24,10 @@ class ApplicationFormController {
         respond new ApplicationForm(params)
     }
 
+    def yourApplications(){
+
+    }
+
     @Transactional
     def save(ApplicationForm applicationForm) {
         if (applicationForm == null) {

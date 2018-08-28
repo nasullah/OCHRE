@@ -7,7 +7,7 @@ class Person {
         familyName()
         firstName()
         jobTitle()
-        workAddress()
+        workAddress widget: 'textarea'
         telephoneNumber()
         emailAddress()
     }
