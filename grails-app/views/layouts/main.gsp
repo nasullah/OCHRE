@@ -39,10 +39,10 @@
                         </g:else>
                     </li>
                     <li class="nav-item">
-                        <g:link class="nav-link" controller="applicationForm" action="yourApplications"><i class="fas fa-list-alt"></i>  Your Applications</g:link>
+                        <g:link class="nav-link" controller="applicationForm" action="yourExistingApplications"><i class="fas fa-list-alt"></i>  Your Existing Applications</g:link>
                     </li>
                     <li class="nav-item">
-                        <g:link class="nav-link" controller="applicationForm" action="create"><i class="fas fa-plus-circle"></i> New Application</g:link>
+                        <g:link class="nav-link" controller="applicationForm" action="create"><i class="fas fa-plus-circle"></i> Create New Application</g:link>
                     </li>
                 </sec:ifLoggedIn>
                 <sec:ifAnyGranted roles="ROLE_ADMIN">
@@ -81,11 +81,11 @@
                             <g:link class="nav-link" controller="login" action="auth"><i class="fas fa-sign-in-alt"></i> Login</g:link>
                         </g:form>
                     </li>
-                    <li class="nav-link">
-                        <g:form controller="login" action="auth">
-                            <g:link class="nav-link" controller="login" action="auth"><i class="fas fa-user-plus"></i> Register</g:link>
-                        </g:form>
-                    </li>
+                    %{--<li class="nav-link">--}%
+                        %{--<g:form controller="login" action="auth">--}%
+                            %{--<g:link class="nav-link" controller="login" action="auth"><i class="fas fa-user-plus"></i> Register</g:link>--}%
+                        %{--</g:form>--}%
+                    %{--</li>--}%
                 </sec:ifNotLoggedIn>
                 <li class="nav-link">
                     <sec:ifLoggedIn>

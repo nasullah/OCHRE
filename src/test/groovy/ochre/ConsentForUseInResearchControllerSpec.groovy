@@ -3,9 +3,9 @@ package ochre
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ResearchFunderController)
-@Mock(ResearchFunder)
-class ResearchFunderControllerSpec extends Specification {
+@TestFor(ConsentForUseInResearchController)
+@Mock(ConsentForUseInResearch)
+class ConsentForUseInResearchControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class ResearchFunderControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.researchFunderList
-            model.researchFunderCount == 0
+            !model.consentForUseInResearchList
+            model.consentForUseInResearchCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class ResearchFunderControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.researchFunder!= null
+            model.consentForUseInResearch!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class ResearchFunderControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def researchFunder = new ResearchFunder()
-            researchFunder.validate()
-            controller.save(researchFunder)
+            def consentForUseInResearch = new ConsentForUseInResearch()
+            consentForUseInResearch.validate()
+            controller.save(consentForUseInResearch)
 
         then:"The create view is rendered again with the correct model"
-            model.researchFunder!= null
+            model.consentForUseInResearch!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            researchFunder = new ResearchFunder(params)
+            consentForUseInResearch = new ConsentForUseInResearch(params)
 
-            controller.save(researchFunder)
+            controller.save(consentForUseInResearch)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/researchFunder/show/1'
+            response.redirectedUrl == '/consentForUseInResearch/show/1'
             controller.flash.message != null
-            ResearchFunder.count() == 1
+            ConsentForUseInResearch.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class ResearchFunderControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def researchFunder = new ResearchFunder(params)
-            controller.show(researchFunder)
+            def consentForUseInResearch = new ConsentForUseInResearch(params)
+            controller.show(consentForUseInResearch)
 
         then:"A model is populated containing the domain instance"
-            model.researchFunder == researchFunder
+            model.consentForUseInResearch == consentForUseInResearch
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class ResearchFunderControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def researchFunder = new ResearchFunder(params)
-            controller.edit(researchFunder)
+            def consentForUseInResearch = new ConsentForUseInResearch(params)
+            controller.edit(consentForUseInResearch)
 
         then:"A model is populated containing the domain instance"
-            model.researchFunder == researchFunder
+            model.consentForUseInResearch == consentForUseInResearch
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class ResearchFunderControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/researchFunder/index'
+            response.redirectedUrl == '/consentForUseInResearch/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def researchFunder = new ResearchFunder()
-            researchFunder.validate()
-            controller.update(researchFunder)
+            def consentForUseInResearch = new ConsentForUseInResearch()
+            consentForUseInResearch.validate()
+            controller.update(consentForUseInResearch)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.researchFunder == researchFunder
+            model.consentForUseInResearch == consentForUseInResearch
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            researchFunder = new ResearchFunder(params).save(flush: true)
-            controller.update(researchFunder)
+            consentForUseInResearch = new ConsentForUseInResearch(params).save(flush: true)
+            controller.update(consentForUseInResearch)
 
         then:"A redirect is issued to the show action"
-            researchFunder != null
-            response.redirectedUrl == "/researchFunder/show/$researchFunder.id"
+            consentForUseInResearch != null
+            response.redirectedUrl == "/consentForUseInResearch/show/$consentForUseInResearch.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class ResearchFunderControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/researchFunder/index'
+            response.redirectedUrl == '/consentForUseInResearch/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def researchFunder = new ResearchFunder(params).save(flush: true)
+            def consentForUseInResearch = new ConsentForUseInResearch(params).save(flush: true)
 
         then:"It exists"
-            ResearchFunder.count() == 1
+            ConsentForUseInResearch.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(researchFunder)
+            controller.delete(consentForUseInResearch)
 
         then:"The instance is deleted"
-            ResearchFunder.count() == 0
-            response.redirectedUrl == '/researchFunder/index'
+            ConsentForUseInResearch.count() == 0
+            response.redirectedUrl == '/consentForUseInResearch/index'
             flash.message != null
     }
 }

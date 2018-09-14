@@ -9,8 +9,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
-    <title><g:message code="default.create.label" args="[entityName]" /></title>
+    <title>Application Progress</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,10 +24,10 @@
 <body>
 <a href="#create-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <br>
-<h2><center>Your Applications List</center></h2>
+<h2><center>Application Status</center></h2>
 <hr>
 <div class="container">
-    <h5><center>Application 1234</center></h5>
+    <h5><center>Application ${applicationFormId}</center></h5>
     <br>
     <div id="smartwizard">
         <ul>
@@ -57,8 +56,9 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        var status = ${status}
         $('#smartwizard').smartWizard({
-            selected: 2,
+            selected: status,
             theme: 'circles',
             transitionEffect:'fade',
             showStepURLhash: false

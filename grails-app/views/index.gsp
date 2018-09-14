@@ -75,7 +75,7 @@
                             <i class="fas fa-spinner"></i> Draft in Progress
                         </div>
                         <div class="panel-body">
-                            <g:link controller="multiplexImage" action="yourImageList" params="[study:'Hempath']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Drafted']"><i class="fas fa-list-alt"></i> Application List</g:link>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                             <i class="fas fa-hand-point-up"></i> Submitted
                         </div>
                         <div class="panel-body">
-                            <g:link controller="multiplexImage" action="sharedImageList" params="[study:'Megakaryocyte_Detection']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Submitted']"><i class="fas fa-list-alt"></i> Application List</g:link>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <i class="fas fa-users"></i> OCHRe Committee Meeting
                         </div>
                         <div class="panel-body">
-                            <g:link controller="multiplexImage" action="sharedImageList" params="[study:'Megakaryocyte_Detection']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Meeting']"><i class="fas fa-list-alt"></i> Application List</g:link>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                             <i class="fas fa-calendar-check"></i> Approved
                         </div>
                         <div class="panel-body">
-                            <g:link controller="multiplexImage" action="sharedImageList" params="[study:'Megakaryocyte_Detection']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Approved']"><i class="fas fa-list-alt"></i> Application List</g:link>
                         </div>
                     </div>
                 </div>

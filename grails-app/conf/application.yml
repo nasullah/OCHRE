@@ -105,6 +105,9 @@ dataSource:
 
 environments:
     development:
+        grails:
+            serverURL: http://localhost:8080/OCHRE
+        uploadFolder: /Users/nasulla/Desktop/upload_folder/
         dataSource:
             dbCreate: create-drop
             url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
@@ -113,24 +116,26 @@ environments:
             dbCreate: update
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
+        grails:
+            serverURL: http://163.1.69.128:8080/OCHRE
+        uploadFolder: D:/upload_folder/
         dataSource:
-            dbCreate: none
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-            properties:
-                jmxEnabled: true
-                initialSize: 5
-                maxActive: 50
-                minIdle: 5
-                maxIdle: 25
-                maxWait: 10000
-                maxAge: 600000
-                timeBetweenEvictionRunsMillis: 5000
-                minEvictableIdleTimeMillis: 60000
-                validationQuery: SELECT 1
-                validationQueryTimeout: 3
-                validationInterval: 15000
-                testOnBorrow: true
-                testWhileIdle: true
-                testOnReturn: false
-                jdbcInterceptors: ConnectionState
-                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+            dbCreate: update
+            url: jdbc:postgresql://localhost:5432/ochre
+            username: postgres
+            password: password
+            pooled: true
+            driverClassName: org.postgresql.Driver
+
+grails:
+     controllers:
+         upload:
+             maxFileSize: 50000000
+             maxRequestSize: 50000000
+
+server:
+    contextPath: '/OCHRE'
+    compression:
+          enabled: true
+    session:
+          timeout: 7200

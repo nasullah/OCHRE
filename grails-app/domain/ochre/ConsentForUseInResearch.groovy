@@ -13,6 +13,6 @@ class ConsentForUseInResearch {
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {
-        return "${form}";
+        return "${formType}";
     }
 }
