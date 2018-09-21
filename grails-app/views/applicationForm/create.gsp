@@ -154,8 +154,8 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Is shipping details different from above? <span style="color: red">*</span></label><br>
-                                <input type="radio" name="shippingDetailsSame" value="yes" onclick="shippingHide()" required> Yes
-                                <input type="radio" name="shippingDetailsSame" onclick="shippingShow()" value="no"> No
+                                <input type="radio" name="shippingDetailsSame" value="yes" onclick="shippingShow()" required> Yes
+                                <input type="radio" name="shippingDetailsSame" onclick="shippingHide()" value="no"> No
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
