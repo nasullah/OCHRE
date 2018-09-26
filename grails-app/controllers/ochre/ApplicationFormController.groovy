@@ -26,6 +26,35 @@ class ApplicationFormController {
         render(view : 'create', model:[applicationForm:applicationForm])
     }
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+    def registration(){
+
+    }
+
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+    @Transactional
+    def saveRegistration(){
+        def emailAddress = params.emailAddress
+        def password = params.password
+        def repeatPassword = params.repeatPassword
+        def matchPassword = false
+        if(password == repeatPassword){
+            matchPassword = true
+        }
+        if(!User.findByUsername(emailAddress) && matchPassword){
+            def user = new User(username: emailAddress, enabled: true, password: password).save(failOnError: true)
+            UserRole.create user, Role.findByAuthority('ROLE_USER')
+            flash.message = "Registration is complete"
+            redirect(uri:'/')
+        }else if(User.findByUsername(emailAddress)){
+            redirect(action: 'registration')
+            flash.message = "An account with the email address already exists"
+        }else if(!matchPassword){
+            redirect(action: 'registration')
+            flash.message = "Please enter matching password"
+        }
+    }
+
     def yourExistingApplications(){
         def applicationList = ApplicationForm.list()
         [applicationList:applicationList.sort{-it.id}]
@@ -96,6 +125,13 @@ class ApplicationFormController {
                 applicationForm?.contactPerson?.telephoneNumber = params.contactPerson.telephoneNumber
                 applicationForm?.contactPerson?.emailAddress = params.contactPerson.emailAddress
 
+                applicationForm?.sampleRequestContact?.jobTitle = params.sampleRequestContact.jobTitle
+                applicationForm?.sampleRequestContact?.familyName = params.sampleRequestContact.familyName
+                applicationForm?.sampleRequestContact?.firstName = params.sampleRequestContact.firstName
+                applicationForm?.sampleRequestContact?.workAddress = params.sampleRequestContact.workAddress
+                applicationForm?.sampleRequestContact?.telephoneNumber = params.sampleRequestContact.telephoneNumber
+                applicationForm?.sampleRequestContact?.emailAddress = params.sampleRequestContact.emailAddress
+
                 if(params.shippingDetailsSame == 'yes'){
                     applicationForm?.shippingDetails?.jobTitle = params.contactPerson.jobTitle
                     applicationForm?.shippingDetails?.familyName = params.contactPerson.familyName
@@ -120,6 +156,7 @@ class ApplicationFormController {
                 def leadApplicant = new Person()
                 def contactPerson = new Person()
                 def shippingDetails = new Person()
+                def sampleRequestContact = new Person()
 
                 leadApplicant?.jobTitle = params.leadApplicant.jobTitle
                 leadApplicant?.familyName = params.leadApplicant.familyName
@@ -134,6 +171,13 @@ class ApplicationFormController {
                 contactPerson?.workAddress = params.contactPerson.workAddress
                 contactPerson?.telephoneNumber = params.contactPerson.telephoneNumber
                 contactPerson?.emailAddress = params.contactPerson.emailAddress
+
+                sampleRequestContact?.jobTitle = params.sampleRequestContact.jobTitle
+                sampleRequestContact?.familyName = params.sampleRequestContact.familyName
+                sampleRequestContact?.firstName = params.sampleRequestContact.firstName
+                sampleRequestContact?.workAddress = params.sampleRequestContact.workAddress
+                sampleRequestContact?.telephoneNumber = params.sampleRequestContact.telephoneNumber
+                sampleRequestContact?.emailAddress = params.sampleRequestContact.emailAddress
 
                 if(params.shippingDetailsSame == 'yes'){
                     shippingDetails?.jobTitle = params.contactPerson.jobTitle
@@ -153,10 +197,12 @@ class ApplicationFormController {
 
                 leadApplicant.save()
                 contactPerson.save()
+                sampleRequestContact.save()
                 shippingDetails.save()
 
                 applicationForm?.leadApplicant = leadApplicant
                 applicationForm?.contactPerson = contactPerson
+                applicationForm?.sampleRequestContact = sampleRequestContact
                 applicationForm?.shippingDetails = shippingDetails
                 applicationForm?.stepOneComplete = true
                 applicationForm?.applicationType = ApplicationType.findByApplicationTypeName('Drafted')

@@ -40,180 +40,252 @@
 <div id="step-1">
     <g:form action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
     <div id="form-step-0" role="form" data-toggle="validator">
+            <br>
             <h3 class="border-bottom border-gray pb-2">Section 1 Applicant details</h3>
-            <div class="card">
-                <div class="card-header"><b>Lead applicant</b> (e.g. Head of Department or Group, or clinical trial PI)</div>
-                <div class="card-block p-0" style="margin: auto;width: 50%">
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="leadApplicant.jobTitle">Title <span style="color: red">*</span></label><br>
-                                <input type='text' name='leadApplicant.jobTitle' id='leadApplicant.jobTitle' value="${applicationForm?.leadApplicant?.jobTitle}" placeholder='Enter Title' required>
-                                <div class="help-block with-errors"></div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><b>Lead applicant</b> (e.g. Clinical Trial PI)</div>
+                        <div class="card-body">
+                            <div class="card-block p-0">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="leadApplicant.jobTitle">Title <span style="color: red">*</span></label><br>
+                                            <input type='text' name='leadApplicant.jobTitle' id='leadApplicant.jobTitle' value="${applicationForm?.leadApplicant?.jobTitle}" placeholder='Enter Title' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="leadApplicant.firstName">First Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='leadApplicant.firstName' id='leadApplicant.firstName' value="${applicationForm?.leadApplicant?.firstName}" placeholder='Enter First Name' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="leadApplicant.familyName">Family Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='leadApplicant.familyName' id='leadApplicant.familyName' value="${applicationForm?.leadApplicant?.familyName}" placeholder='Enter Family Name' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="leadApplicant.firstName">Work Address <span style="color: red">*</span></label><br>
+                                            <textarea name='leadApplicant.workAddress' id='leadApplicant.workAddress' placeholder='Enter Work Address' required>${applicationForm?.leadApplicant?.workAddress}</textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="leadApplicant.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
+                                            <input type='text' name='leadApplicant.telephoneNumber' id='leadApplicant.telephoneNumber' value="${applicationForm?.leadApplicant?.telephoneNumber}" placeholder='Enter Telephone Number' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="leadApplicant.emailAddress">Email Address <span style="color: red">*</span></label><br>
+                                            <input type='text' name='leadApplicant.emailAddress' id='leadApplicant.emailAddress' value="${applicationForm?.leadApplicant?.emailAddress}" placeholder='Enter Email Address' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="leadApplicant.familyName">Family Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='leadApplicant.familyName' id='leadApplicant.familyName' value="${applicationForm?.leadApplicant?.familyName}" placeholder='Enter Family Name' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="leadApplicant.firstName">First Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='leadApplicant.firstName' id='leadApplicant.firstName' value="${applicationForm?.leadApplicant?.firstName}" placeholder='Enter First Name' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="leadApplicant.firstName">Work Address <span style="color: red">*</span></label><br>
-                                <textarea name='leadApplicant.workAddress' id='leadApplicant.workAddress' placeholder='Enter Work Address' required>${applicationForm?.leadApplicant?.workAddress}</textarea>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="leadApplicant.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
-                                <input type='text' name='leadApplicant.telephoneNumber' id='leadApplicant.telephoneNumber' value="${applicationForm?.leadApplicant?.telephoneNumber}" placeholder='Enter Telephone Number' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="leadApplicant.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                <input type='text' name='leadApplicant.emailAddress' id='leadApplicant.emailAddress' value="${applicationForm?.leadApplicant?.emailAddress}" placeholder='Enter Email Address' required>
-                                <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><b>Trial Contact</b> (e.g. Clinical Trial Administrator/Manager)</div>
+                        <div class="card-body">
+                            <div class="card-block p-0">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="contactPerson.jobTitle">Title <span style="color: red">*</span></label><br>
+                                            <input type='text' name='contactPerson.jobTitle' id='contactPerson.jobTitle' value="${applicationForm?.contactPerson?.jobTitle}" placeholder='Enter Title' required="">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="contactPerson.firstName">First Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='contactPerson.firstName' id='contactPerson.firstName' value="${applicationForm?.contactPerson?.firstName}" placeholder='Enter First Name' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="contactPerson.familyName">Family Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='contactPerson.familyName' id='contactPerson.familyName' value="${applicationForm?.contactPerson?.familyName}" placeholder='Enter Family Name' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="contactPerson.workAddress">Work Address <span style="color: red">*</span></label><br>
+                                            <textarea name='contactPerson.workAddress' id='contactPerson.workAddress' placeholder='Enter Work Address' required>${applicationForm?.contactPerson?.workAddress}</textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="contactPerson.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
+                                            <input type='text' name='contactPerson.telephoneNumber' id='contactPerson.telephoneNumber' value="${applicationForm?.contactPerson?.telephoneNumber}" placeholder='Enter Telephone Number' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="contactPerson.emailAddress">Email Address <span style="color: red">*</span></label><br>
+                                            <input type='text' name='contactPerson.emailAddress' id='contactPerson.emailAddress' value="${applicationForm?.contactPerson?.emailAddress}" placeholder='Enter Email Address' required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="card">
-                <div class="card-header"><b>Contact person</b> (i.e. the person who will coordinate the request(s) with OCHRe)</div>
-                <div class="card-block p-0" style="margin: auto;width: 50%">
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPerson.jobTitle">Title <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPerson.jobTitle' id='contactPerson.jobTitle' value="${applicationForm?.contactPerson?.jobTitle}" placeholder='Enter Title' required="">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPerson.familyName">Family Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPerson.familyName' id='contactPerson.familyName' value="${applicationForm?.contactPerson?.familyName}" placeholder='Enter Family Name' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPerson.firstName">First Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPerson.firstName' id='contactPerson.firstName' value="${applicationForm?.contactPerson?.firstName}" placeholder='Enter First Name' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPerson.workAddress">Work Address <span style="color: red">*</span></label><br>
-                                <textarea name='contactPerson.workAddress' id='contactPerson.workAddress' placeholder='Enter Work Address' required>${applicationForm?.contactPerson?.workAddress}</textarea>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPerson.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPerson.telephoneNumber' id='contactPerson.telephoneNumber' value="${applicationForm?.contactPerson?.telephoneNumber}" placeholder='Enter Telephone Number' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPerson.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPerson.emailAddress' id='contactPerson.emailAddress' value="${applicationForm?.contactPerson?.emailAddress}" placeholder='Enter Email Address' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Is shipping details different from above? <span style="color: red">*</span></label><br>
-                                <input type="radio" name="shippingDetailsSame" value="yes" onclick="shippingShow()" required> Yes
-                                <input type="radio" name="shippingDetailsSame" onclick="shippingHide()" value="no"> No
-                                <div class="help-block with-errors"></div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><b>Sample Request Contact</b> (e.g. Research Nurse or Clinical Trial Practitioner)</div>
+                        <div class="card-body">
+                            <div class="card-block p-0">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="sampleRequestContact.jobTitle">Title <span style="color: red">*</span></label><br>
+                                            <input type='text' name='sampleRequestContact.jobTitle' id='sampleRequestContact.jobTitle' value="${applicationForm?.sampleRequestContact?.jobTitle}" placeholder='Enter Title'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="sampleRequestContact.firstName">First Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='sampleRequestContact.firstName' id='sampleRequestContact.firstName' value="${applicationForm?.sampleRequestContact?.firstName}" placeholder='Enter First Name'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="sampleRequestContact.familyName">Family Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='sampleRequestContact.familyName' id='sampleRequestContact.familyName' value="${applicationForm?.sampleRequestContact?.familyName}" placeholder='Enter Family Name'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="sampleRequestContact.workAddress">Work Address <span style="color: red">*</span></label><br>
+                                            <textarea name='sampleRequestContact.workAddress' id='sampleRequestContact.workAddress' placeholder='Enter Work Address'>${applicationForm?.sampleRequestContact?.workAddress}</textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="sampleRequestContact.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
+                                            <input type='text' name='sampleRequestContact.telephoneNumber' id='sampleRequestContact.telephoneNumber' value="${applicationForm?.sampleRequestContact?.telephoneNumber}" placeholder='Enter Telephone Number'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="sampleRequestContact.emailAddress">Email Address <span style="color: red">*</span></label><br>
+                                            <input type='text' name='sampleRequestContact.emailAddress' id='sampleRequestContact.emailAddress' value="${applicationForm?.sampleRequestContact?.emailAddress}" placeholder='Enter Email Address'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Is shipping details different from above? <span style="color: red">*</span></label><br>
+                                            <input type="radio" name="shippingDetailsSame" value="yes" onclick="shippingShow()" required> Yes
+                                            <input type="radio" name="shippingDetailsSame" onclick="shippingHide()" value="no"> No
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <div class="card" id="shipping">
-                <div class="card-header"><b>Shipping Details</b></div>
-                <div class="card-block p-0" style="margin: auto;width: 50%">
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="shippingDetails.jobTitle">Title <span style="color: red">*</span></label><br>
-                                <input type='text' name='shippingDetails.jobTitle' id='shippingDetails.jobTitle' value="${applicationForm?.shippingDetails?.jobTitle}" placeholder='Enter Title'>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="shippingDetails.familyName">Family Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='shippingDetails.familyName' id='shippingDetails.familyName' value="${applicationForm?.shippingDetails?.familyName}" placeholder='Enter Family Name'>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="shippingDetails.firstName">First Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='shippingDetails.firstName' id='shippingDetails.firstName' value="${applicationForm?.shippingDetails?.firstName}" placeholder='Enter First Name'>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="shippingDetails.workAddress">Work Address <span style="color: red">*</span></label><br>
-                                <textarea name='shippingDetails.workAddress' id='shippingDetails.workAddress' placeholder='Enter Work Address'>${applicationForm?.shippingDetails?.workAddress}</textarea>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="shippingDetails.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
-                                <input type='text' name='shippingDetails.telephoneNumber' id='shippingDetails.telephoneNumber' value="${applicationForm?.shippingDetails?.telephoneNumber}" placeholder='Enter Telephone Number'>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="shippingDetails.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                <input type='text' name='shippingDetails.emailAddress' id='shippingDetails.emailAddress' value="${applicationForm?.shippingDetails?.emailAddress}" placeholder='Enter Email Address'>
-                                <div class="help-block with-errors"></div>
+                <div class="col-lg-6">
+                    <div class="card" id="shipping">
+                        <div class="card-header"><b>Shipping Details</b></div>
+                        <div class="card-body">
+                            <div class="card-block p-0">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="shippingDetails.jobTitle">Title <span style="color: red">*</span></label><br>
+                                            <input type='text' name='shippingDetails.jobTitle' id='shippingDetails.jobTitle' value="${applicationForm?.shippingDetails?.jobTitle}" placeholder='Enter Title'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="shippingDetails.firstName">First Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='shippingDetails.firstName' id='shippingDetails.firstName' value="${applicationForm?.shippingDetails?.firstName}" placeholder='Enter First Name'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="shippingDetails.familyName">Family Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='shippingDetails.familyName' id='shippingDetails.familyName' value="${applicationForm?.shippingDetails?.familyName}" placeholder='Enter Family Name'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="shippingDetails.workAddress">Work Address <span style="color: red">*</span></label><br>
+                                            <textarea name='shippingDetails.workAddress' id='shippingDetails.workAddress' placeholder='Enter Work Address'>${applicationForm?.shippingDetails?.workAddress}</textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="shippingDetails.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
+                                            <input type='text' name='shippingDetails.telephoneNumber' id='shippingDetails.telephoneNumber' value="${applicationForm?.shippingDetails?.telephoneNumber}" placeholder='Enter Telephone Number'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="shippingDetails.emailAddress">Email Address <span style="color: red">*</span></label><br>
+                                            <input type='text' name='shippingDetails.emailAddress' id='shippingDetails.emailAddress' value="${applicationForm?.shippingDetails?.emailAddress}" placeholder='Enter Email Address'>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -227,6 +299,7 @@
 <div id="step-2">
     <g:form action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
         <div id="form-step-1" role="form" data-toggle="validator">
+            <br>
             <h3 class="border-bottom border-gray pb-2">Section 2 Funding details</h3>
             <div class="card">
                 <div class="card-header"><b>Research funder </b></div>
@@ -315,6 +388,7 @@
 <div id="step-3">
     <g:uploadForm action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
         <div id="form-step-2" role="form" data-toggle="validator">
+            <br>
             <h3 class="border-bottom border-gray pb-2">Section 3 Approval details</h3>
             <div class="card">
                 <div class="card-header"><b>Ethical approval details</b> </div>
@@ -407,7 +481,6 @@
             <div class="card">
                 <div class="card-header"><b>R&D approval details</b></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
-                    <br>
                     <div class="row">
                         <g:if test="${applicationForm?.randDApproval?.letter}">
                             <div class="col-lg-12">
@@ -524,6 +597,7 @@
 <div id="step-4">
     <g:form action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
         <div id="form-step-3" role="form" data-toggle="validator">
+            <br>
             <h3 class="border-bottom border-gray pb-2">Section 4 Project details</h3>
             <div class="card">
                 <div class="card-header"><b>Trial Details</b></div>
@@ -585,6 +659,7 @@
 <div id="step-5">
     <g:uploadForm action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
         <div id="form-step-4" role="form" data-toggle="validator">
+            <br>
             <h3 class="border-bottom border-gray pb-2">Section 5 Samples, service and data</h3>
             <div class="card">
                 <div class="card-header"><b>Please identify every sample that the study requires (per patient)</b></div>

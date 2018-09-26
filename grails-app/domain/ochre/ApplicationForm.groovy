@@ -7,6 +7,7 @@ class ApplicationForm {
     static constraints = {
         leadApplicant(nullable: true)
         contactPerson(nullable: true)
+        sampleRequestContact(nullable: true)
         shippingDetailsSame(nullable: true)
         shippingDetails(nullable: true)
         researchFunder(nullable: true)
@@ -30,6 +31,7 @@ class ApplicationForm {
 
     Person leadApplicant
     Person contactPerson
+    Person sampleRequestContact
     boolean shippingDetailsSame
     Person shippingDetails
     boolean stepOneComplete = Boolean.FALSE

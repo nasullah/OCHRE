@@ -113,8 +113,8 @@
         </section>
     </div>
     <hr>
+    <div style="height: 50%">
+    </div>
 </sec:ifAnyGranted>
-<div style="height: 65%">
-</div>
 </body>
 </html>
