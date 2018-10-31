@@ -2,10 +2,17 @@ package ochre
 
 class Sample {
 
+    static mapping = {
+        sampleType type: "text"
+        slideThickness type: "text"
+        stainedSpecify type: "text"
+        specialRequirements type: "text"
+    }
     static belongsTo = [applicationFrom:ApplicationForm]
     static auditable = true
     static constraints = {
         applicationFrom()
+        timePoint(nullable: true)
         sampleType(nullable: true)
         slideNumber(nullable: true)
         slideThickness(nullable: true)
@@ -15,6 +22,7 @@ class Sample {
         specialRequirements widget: 'textarea',nullable: true
     }
 
+    String timePoint
     String sampleType
     String slideNumber
     String slideThickness

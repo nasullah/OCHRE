@@ -2,6 +2,12 @@ package ochre
 
 class ApplicationForm {
 
+    static mapping = {
+        dataRequirementsOther type: "text"
+        sponsorOrganisation type: "text"
+        registrationOnPortfolioName type: "text"
+        companyName type: "text"
+    }
     static hasMany = [samples:Sample]
     static auditable = true
     static constraints = {
@@ -16,17 +22,18 @@ class ApplicationForm {
         ethicalApproval(nullable: true)
         consentForUseInResearch(nullable: true)
         randDApproval(nullable: true)
+        registrationOnPortfolio(nullable: true)
         registrationOnPortfolioName(nullable: true)
         sponsorOrganisation(nullable: true)
         mTAArranged widget: 'textarea', nullable: true
-        trial(nullable: true)
         mTAOrCTA(nullable: true)
+        trial(nullable: true)
         howMaterialUsed widget: 'textarea', nullable: true
         dataRequirements widget: 'textarea', nullable: true
         dataRequirementsOther(nullable: true)
         clinicalTrialForm(nullable: true)
-        timePoint(nullable: true)
         applicationType(nullable: true)
+        applicationOwner()
     }
 
     Person leadApplicant
@@ -44,17 +51,18 @@ class ApplicationForm {
     RandDApproval randDApproval
     boolean stepThreeComplete = Boolean.FALSE
     Trial trial
+    String registrationOnPortfolio
     String registrationOnPortfolioName
     String sponsorOrganisation
     String mTAArranged
-    String mTAOrCTA
+    MTAOrCTA mTAOrCTA
     boolean stepFourComplete = Boolean.FALSE
-    String timePoint
     String howMaterialUsed
     String dataRequirements
     String dataRequirementsOther
     String clinicalTrialForm
     ApplicationType applicationType
+    User applicationOwner
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {

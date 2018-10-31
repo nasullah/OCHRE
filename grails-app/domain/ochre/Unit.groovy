@@ -2,6 +2,10 @@ package ochre
 
 class Unit {
 
+    static mapping = {
+        unitName type: "text"
+        unitType type: "text"
+    }
     static auditable = true
     static constraints = {
         unitType()

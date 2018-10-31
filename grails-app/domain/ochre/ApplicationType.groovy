@@ -2,6 +2,9 @@ package ochre
 
 class ApplicationType {
 
+    static mapping = {
+        applicationTypeName type: "text"
+    }
     static auditable = true
     static constraints = {
         applicationTypeName(nullable: true)

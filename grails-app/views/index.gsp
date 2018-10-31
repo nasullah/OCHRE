@@ -82,6 +82,16 @@
                 <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                            <i class="fas fa-hand-point-up"></i> Submitted Pending Attachments
+                        </div>
+                        <div class="panel-body">
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Submitted Pending Attachments']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <i class="fas fa-hand-point-up"></i> Submitted
                         </div>
                         <div class="panel-body">

@@ -2,20 +2,22 @@ package ochre
 
 class EthicalApproval {
 
+    static hasMany = [ethicalApprovalLetter:EthicalApprovalLetter]
     static auditable = true
     static constraints = {
         referenceNo()
         title()
         startDate()
-        expiryDate()
-        letter()
+        expiryDate(nullable: true)
+        ethicalApprovalLetterPending(nullable: true)
+        ethicalApprovalLetterComplete(nullable: true)
     }
-
+    boolean ethicalApprovalLetterPending = Boolean.FALSE
+    boolean ethicalApprovalLetterComplete = Boolean.FALSE
     String referenceNo
     String title
     Date startDate
     Date expiryDate
-    String letter
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {

@@ -32,9 +32,10 @@
     <div id="smartwizard">
         <ul>
             <li><a href="#"> 1<br /><small>Draft In Progress</small></a></li>
-            <li><a href="#"> 2<br /><small>Application Submitted</small></a></li>
-            <li><a href="#"> 3<br /><small>OCHRe Committee Meeting</small></a></li>
-            <li><a href="#"> 4<br /><small>Application Approved</small></a></li>
+            <li><a href="#"> 2<br /><small>Application Submitted Pending Attachments</small></a></li>
+            <li><a href="#"> 3<br /><small>Application Submitted</small></a></li>
+            <li><a href="#"> 4<br /><small>OCHRe Committee Meeting</small></a></li>
+            <li><a href="#"> 5<br /><small>Application Approved</small></a></li>
         </ul>
     </div>
 </div>

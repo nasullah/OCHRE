@@ -10,12 +10,15 @@ import grails.plugin.springsecurity.annotation.Secured
 class ApplicationFormController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def springSecurityService
 
+    @Secured(['ROLE_ADMIN'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond ApplicationForm.list(params), model:[applicationFormCount: ApplicationForm.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def show(ApplicationForm applicationForm) {
         respond applicationForm
     }
@@ -29,6 +32,101 @@ class ApplicationFormController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def registration(){
 
+    }
+
+    def uploadPendingDocs(){
+        def applicationFormId = params.long('applicationFormId')
+        def applicationForm = ApplicationForm.findById(applicationFormId)
+        [applicationForm:applicationForm]
+    }
+
+    @Transactional
+    def savePendingUpload(){
+        def applicationFormId = params.long('applicationFormId')
+        def applicationForm = ApplicationForm.findById(applicationFormId)
+        def ethicalApproval = applicationForm?.ethicalApproval
+        def consentForUseInResearch = applicationForm?.consentForUseInResearch
+        def randDApproval = applicationForm?.randDApproval
+        def mTAOrCTA = applicationForm?.mTAOrCTA
+
+        for (number in 1..5 ) {
+            def letter = request.getFile('ethicalApprovalLetter' + number )
+            if(letter?.originalFilename){
+                if (letter?.empty) {
+                    return
+                }
+                def ethicalApprovalLetter = new EthicalApprovalLetter()
+                ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
+                        letter.originalFilename
+                def destinationFile = new File(ethicalApprovalLetter.letter)
+                try {
+                    letter.transferTo(destinationFile)
+                    ethicalApproval.addToEthicalApprovalLetter(ethicalApprovalLetter).save failOnError: true
+                }
+                catch (Exception ex) {
+                    log.error(ex)
+                }
+            }
+        }
+        for (number in 1..5 ) {
+            def form = request.getFile('consentForUseInResearchForm' + number )
+            if(form?.originalFilename){
+                if (form?.empty) {
+                    return
+                }
+                def consentForUseInResearchForm = new ConsentForUseInResearchForms()
+                consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_For_Use_In_Research_Form_' + number + '_Application_'+ applicationForm.id + '_' +
+                        form.originalFilename
+                def destinationFile = new File(consentForUseInResearchForm.form)
+                try {
+                    form.transferTo(destinationFile)
+                    consentForUseInResearch.addToConsentForUseInResearchForms(consentForUseInResearchForm).save failOnError: true
+                }
+                catch (Exception ex) {
+                    log.error(ex)
+                }
+            }
+        }
+        for (number in 1..5 ) {
+            def letter = request.getFile('randDApprovalLetter' + number )
+            if(letter?.originalFilename){
+                if (letter?.empty) {
+                    return
+                }
+                def randDApprovalLetter = new RandDApprovalLetter()
+                randDApprovalLetter.letter = grailsApplication.config.uploadFolder + 'RandD_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
+                        letter.originalFilename
+                def destinationFile = new File(randDApprovalLetter.letter)
+                try {
+                    letter.transferTo(destinationFile)
+                    randDApproval.addToRandDApprovalLetter(randDApprovalLetter).save failOnError: true
+
+                }
+                catch (Exception ex) {
+                    log.error(ex)
+                }
+            }
+        }
+        for (number in 1..5 ) {
+            def copy = request.getFile('mTAOrCTA' + number )
+            if(copy?.originalFilename){
+                if (copy?.empty) {
+                    return
+                }
+                def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
+                copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + number + '_Application_'+ applicationForm.id + '_' +
+                        copy.originalFilename
+                def destinationFile = new File(copyOfMTAOrCTA.copy)
+                try {
+                    copy.transferTo(destinationFile)
+                    mTAOrCTA.addToCopyOfMTAOrCTA(copyOfMTAOrCTA).save failOnError: true
+                }
+                catch (Exception ex) {
+                    log.error(ex)
+                }
+            }
+        }
+        redirect(action: 'yourExistingApplications')
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
@@ -45,7 +143,7 @@ class ApplicationFormController {
             def user = new User(username: emailAddress, enabled: true, password: password).save(failOnError: true)
             UserRole.create user, Role.findByAuthority('ROLE_USER')
             flash.message = "Registration is complete"
-            redirect(uri:'/')
+            redirect(uri:'/login/auth')
         }else if(User.findByUsername(emailAddress)){
             redirect(action: 'registration')
             flash.message = "An account with the email address already exists"
@@ -56,7 +154,7 @@ class ApplicationFormController {
     }
 
     def yourExistingApplications(){
-        def applicationList = ApplicationForm.list()
+        def applicationList = ApplicationForm.findAllByApplicationOwner(springSecurityService?.currentUser)
         [applicationList:applicationList.sort{-it.id}]
     }
 
@@ -83,16 +181,19 @@ class ApplicationFormController {
         def status = 0
         if(applicationType == 'Drafted'){
             status = 1
-        }else if(applicationType == 'Submitted'){
+        }else if(applicationType == 'Submitted Pending Attachments'){
             status = 2
-        }else if(applicationType == 'Meeting'){
+        }else if(applicationType == 'Submitted'){
             status = 3
-        }else if(applicationType == 'Approved'){
+        }else if(applicationType == 'Meeting'){
             status = 4
+        }else if(applicationType == 'Approved'){
+            status = 5
         }
         [status:status, applicationFormId:applicationFormId]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def applicationList(){
         def applicationType = params.applicationType
         def filteredApplicationList = ApplicationForm.findAllByApplicationType(ApplicationType.findByApplicationTypeName(applicationType))
@@ -147,7 +248,7 @@ class ApplicationFormController {
                     applicationForm?.shippingDetails?.telephoneNumber = params.shippingDetails.telephoneNumber
                     applicationForm?.shippingDetails?.emailAddress = params.shippingDetails.emailAddress
                 }
-
+                applicationForm.applicationOwner = springSecurityService?.currentUser
                 applicationForm.save failOnError: true
 
             } else {
@@ -200,6 +301,7 @@ class ApplicationFormController {
                 sampleRequestContact.save()
                 shippingDetails.save()
 
+                applicationForm.applicationOwner = springSecurityService?.currentUser
                 applicationForm?.leadApplicant = leadApplicant
                 applicationForm?.contactPerson = contactPerson
                 applicationForm?.sampleRequestContact = sampleRequestContact
@@ -241,8 +343,9 @@ class ApplicationFormController {
                 applicationForm?.ethicalApproval?.referenceNo = params.ethicalApproval.referenceNo
                 applicationForm?.ethicalApproval?.title = params.ethicalApproval.title
                 applicationForm?.ethicalApproval?.startDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.startDate)
-                applicationForm?.ethicalApproval?.expiryDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.expiryDate)
-                applicationForm?.consentForUseInResearch?.formType = params.consentForUseInResearch.formType
+                if(params.ethicalApproval.expiryDate){
+                    applicationForm?.ethicalApproval?.expiryDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.expiryDate)
+                }
                 applicationForm?.randDApproval?.bodyName = params.randDApproval.bodyName
                 applicationForm?.randDApproval?.referenceNo = params.randDApproval.referenceNo
                 applicationForm?.randDApproval?.otherInformation = params.randDApproval.otherInformation
@@ -254,105 +357,154 @@ class ApplicationFormController {
                 def ethicalApproval = new EthicalApproval()
                 def consentForUseInResearch = new ConsentForUseInResearch()
                 def randDApproval = new RandDApproval()
-
-                def ethicalApprovalLetter = request.getFile('ethicalApprovalLetter')
-                if (ethicalApprovalLetter?.originalFilename){
-                    if (ethicalApprovalLetter?.empty) {
-                        return
-                    }
-                    ethicalApproval.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + applicationForm.id + '_' +
-                            ethicalApprovalLetter.originalFilename
-                    def destinationFile = new File(ethicalApproval.letter)
-                    try {
-                        ethicalApprovalLetter.transferTo(destinationFile)
-                    }
-                    catch (Exception ex) {
-                        log.error(ex)
-                    }
-                }
-
-                def consentForUseInResearchForm = request.getFile('consentForUseInResearchForm')
-                if (consentForUseInResearchForm?.originalFilename){
-                    if (consentForUseInResearchForm?.empty) {
-                        return
-                    }
-                    consentForUseInResearch.form = grailsApplication.config.uploadFolder + 'Consent_For_Use_In_Research' + applicationForm.id + '_' +
-                            consentForUseInResearchForm.originalFilename
-                    def destinationFile = new File(consentForUseInResearch.form)
-                    try {
-                        consentForUseInResearchForm.transferTo(destinationFile)
-                    }
-                    catch (Exception ex) {
-                        log.error(ex)
-                    }
-                }
-
-                def randDApprovalLetter = request.getFile('randDApprovalLetter')
-                if (randDApprovalLetter?.originalFilename){
-                    if (randDApprovalLetter?.empty) {
-                        return
-                    }
-                    randDApproval.letter = grailsApplication.config.uploadFolder + 'RandD_Approval_Letter' + applicationForm.id + '_' +
-                            randDApprovalLetter.originalFilename
-                    def destinationFile = new File(randDApproval.letter)
-                    try {
-                        randDApprovalLetter.transferTo(destinationFile)
-                    }
-                    catch (Exception ex) {
-                        log.error(ex)
-                    }
-                }
-
-                def mTAOrCTA = request.getFile('mTAOrCTA')
-                if (mTAOrCTA?.originalFilename){
-                    if (mTAOrCTA?.empty) {
-                        return
-                    }
-                    applicationForm?.mTAOrCTA = grailsApplication.config.uploadFolder + 'MTA_Or_CTA_Copy' + applicationForm.id + '_' +
-                            mTAOrCTA.originalFilename
-                    def destinationFile = new File(applicationForm.mTAOrCTA)
-                    try {
-                        mTAOrCTA.transferTo(destinationFile)
-                    }
-                    catch (Exception ex) {
-                        log.error(ex)
-                    }
-                }
+                def mTAOrCTA = new MTAOrCTA()
 
                 ethicalApproval?.referenceNo = params.ethicalApproval.referenceNo
                 ethicalApproval?.title = params.ethicalApproval.title
+                if(params.ethicalApprovalLetterComplete == "Yes"){
+                    ethicalApproval?.ethicalApprovalLetterComplete = true
+                    ethicalApproval?.ethicalApprovalLetterPending = false
+                }else {
+                    ethicalApproval?.ethicalApprovalLetterComplete = false
+                    ethicalApproval?.ethicalApprovalLetterPending = true
+                }
                 ethicalApproval?.startDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.startDate)
-                ethicalApproval?.expiryDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.expiryDate)
-                consentForUseInResearch?.formType = params.consentForUseInResearch.formType
+                if(params.ethicalApproval.expiryDate){
+                    ethicalApproval?.expiryDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.expiryDate)
+                }
                 randDApproval?.bodyName = params.randDApproval.bodyName
                 randDApproval?.referenceNo = params.randDApproval.referenceNo
                 randDApproval?.otherInformation = params.randDApproval.otherInformation
+                if(params.randDApprovalLetterComplete == 'Yes'){
+                    randDApproval?.randDApprovalLetterComplete = true
+                    randDApproval.randDApprovalLetterPending = false
+                }else {
+                    randDApproval?.randDApprovalLetterComplete = false
+                    randDApproval.randDApprovalLetterPending = true
+                }
                 applicationForm?.registrationOnPortfolioName = params.registrationOnPortfolioName
                 applicationForm?.sponsorOrganisation = params.sponsorOrganisation
                 applicationForm?.mTAArranged = params.mTAArranged
-                ethicalApproval.save()
-                consentForUseInResearch.save()
-                randDApproval.save()
+                ethicalApproval.save failOnError: true
+                for (number in 1..5 ) {
+                    def letter = request.getFile('ethicalApprovalLetter' + number )
+                    if(letter?.originalFilename){
+                        if (letter?.empty) {
+                            return
+                        }
+                        def ethicalApprovalLetter = new EthicalApprovalLetter()
+                        ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
+                                letter.originalFilename
+                        def destinationFile = new File(ethicalApprovalLetter.letter)
+                        try {
+                            letter.transferTo(destinationFile)
+                            ethicalApproval.addToEthicalApprovalLetter(ethicalApprovalLetter).save failOnError: true
+                        }
+                        catch (Exception ex) {
+                            log.error(ex)
+                        }
+                    }
+                }
+                if(params.consentForUseInResearchFormComplete == 'Yes'){
+                    consentForUseInResearch?.consentForUseInResearchFormComplete = true
+                    consentForUseInResearch?.consentForUseInResearchFormPending = false
+                }else {
+                    consentForUseInResearch?.consentForUseInResearchFormComplete = false
+                    consentForUseInResearch?.consentForUseInResearchFormPending = true
+                }
+                consentForUseInResearch.save failOnError: true
+                for (number in 1..5 ) {
+                    def form = request.getFile('consentForUseInResearchForm' + number )
+                    if(form?.originalFilename){
+                        if (form?.empty) {
+                            return
+                        }
+                        def consentForUseInResearchForm = new ConsentForUseInResearchForms()
+                        consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_For_Use_In_Research_Form_' + number + '_Application_'+ applicationForm.id + '_' +
+                                form.originalFilename
+                        def destinationFile = new File(consentForUseInResearchForm.form)
+                        try {
+                            form.transferTo(destinationFile)
+                            consentForUseInResearch.addToConsentForUseInResearchForms(consentForUseInResearchForm).save failOnError: true
+                        }
+                        catch (Exception ex) {
+                            log.error(ex)
+                        }
+                    }
+                }
+                randDApproval.save failOnError: true
+                for (number in 1..5 ) {
+                    def letter = request.getFile('randDApprovalLetter' + number )
+                    if(letter?.originalFilename){
+                        if (letter?.empty) {
+                            return
+                        }
+                        def randDApprovalLetter = new RandDApprovalLetter()
+                        randDApprovalLetter.letter = grailsApplication.config.uploadFolder + 'RandD_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
+                                letter.originalFilename
+                        def destinationFile = new File(randDApprovalLetter.letter)
+                        try {
+                            letter.transferTo(destinationFile)
+                            randDApproval.addToRandDApprovalLetter(randDApprovalLetter).save failOnError: true
+
+                        }
+                        catch (Exception ex) {
+                            log.error(ex)
+                        }
+                    }
+                }
+                if(params.mTAOrCTAComplete == 'Yes'){
+                    mTAOrCTA?.mTAOrCTAComplete = true
+                    mTAOrCTA.mTAOrCTAPending = false
+                }else {
+                    mTAOrCTA?.mTAOrCTAComplete = false
+                    mTAOrCTA.mTAOrCTAPending = true
+                }
+                mTAOrCTA.save failOnError: true
+                for (number in 1..5 ) {
+                    def copy = request.getFile('mTAOrCTA' + number )
+                    if(copy?.originalFilename){
+                        if (copy?.empty) {
+                            return
+                        }
+                        def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
+                        copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + number + '_Application_'+ applicationForm.id + '_' +
+                                copy.originalFilename
+                        def destinationFile = new File(copyOfMTAOrCTA.copy)
+                        try {
+                            copy.transferTo(destinationFile)
+                            mTAOrCTA.addToCopyOfMTAOrCTA(copyOfMTAOrCTA).save failOnError: true
+                        }
+                        catch (Exception ex) {
+                            log.error(ex)
+                        }
+                    }
+                }
                 applicationForm?.ethicalApproval = ethicalApproval
                 applicationForm?.consentForUseInResearch = consentForUseInResearch
                 applicationForm?.randDApproval = randDApproval
                 applicationForm?.stepThreeComplete = true
+                applicationForm?.mTAOrCTA = mTAOrCTA
                 applicationForm.save failOnError: true
             }
             redirect(action: "create", fragment:fragment, params:[applicationFormId: applicationForm.id])
         }else if (stepNumber == 4){
             if(applicationForm.stepFourComplete){
                 applicationForm?.trial?.trialTitle = params.trial.trialTitle
+                applicationForm?.trial?.recruitedNumber = params.trial.recruitedNumber
                 applicationForm?.trial?.expectedDuration = params.trial.expectedDuration
                 applicationForm?.trial?.laySummary = params.trial.laySummary
                 applicationForm?.trial?.nHSPathologist = params.trial.nHSPathologist
+                applicationForm?.trial?.pathologistName = params.trial.pathologistName
                 applicationForm.save failOnError: true
             }else {
                 def trial = new Trial()
                 trial?.trialTitle = params.trial.trialTitle
                 trial?.expectedDuration = params.trial.expectedDuration
                 trial?.laySummary = params.trial.laySummary
+                trial?.recruitedNumber = params.trial.recruitedNumber
                 trial?.nHSPathologist = params.trial.nHSPathologist
+                trial?.pathologistName = params.trial.pathologistName
                 applicationForm.trial = trial
                 applicationForm?.stepFourComplete = true
                 applicationForm.save failOnError: true
@@ -360,7 +512,6 @@ class ApplicationFormController {
             redirect(action: "create", fragment:fragment, params:[applicationFormId: applicationForm.id])
         }else if (stepNumber == 5){
 
-            applicationForm.timePoint = params.timePoint
             applicationForm.dataRequirements = params.dataRequirements
             applicationForm.dataRequirementsOther = params.dataRequirementsOther
             applicationForm.howMaterialUsed = params.howMaterialUsed
@@ -382,6 +533,7 @@ class ApplicationFormController {
             }
 
             def sample1 = new Sample()
+            sample1?.timePoint = params.sample.timePoint1
             sample1?.sampleType = params.sample.sampleType1
             sample1?.slideNumber = params.sample.slideNumber1
             sample1?.slideThickness = params.sample.slideThickness1
@@ -393,6 +545,7 @@ class ApplicationFormController {
 
             if(params.sample.sampleType2){
                 def sample2 = new Sample()
+                sample2?.timePoint = params.sample.timePoint2
                 sample2?.sampleType = params.sample.sampleType2
                 sample2?.slideNumber = params.sample.slideNumber2
                 sample2?.slideThickness = params.sample.slideThickness2
@@ -402,7 +555,15 @@ class ApplicationFormController {
                 sample2?.specialRequirements = params.sample.specialRequirements2
                 applicationForm.addToSamples(sample2).save failOnError: true
             }
-            applicationForm?.applicationType = ApplicationType.findByApplicationTypeName('Submitted')
+            if(applicationForm.ethicalApproval.ethicalApprovalLetterPending
+               || applicationForm.consentForUseInResearch.consentForUseInResearchFormPending
+               || applicationForm.randDApproval.randDApprovalLetterPending
+               || applicationForm.mTAOrCTA.mTAOrCTAPending){
+                applicationForm?.applicationType = ApplicationType.findByApplicationTypeName('Submitted Pending Attachments')
+            }else {
+                applicationForm?.applicationType = ApplicationType.findByApplicationTypeName('Submitted')
+            }
+            applicationForm.save failOnError: true
             redirect(action: "applicationStatus", params:[applicationFormId: applicationForm.id])
         }
     }
@@ -461,6 +622,7 @@ class ApplicationFormController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     @Transactional
     def delete(ApplicationForm applicationForm) {
 

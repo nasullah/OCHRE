@@ -25,7 +25,10 @@
 <div class="container">
 <!-- External toolbar sample -->
 %{--<form action="#" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">--}%
-
+<div id="nav">
+<a class="btn btn-primary btn-xs" href="/OCHRE" style="margin-left:20px;">&#171; Back to homepage</a>
+<hr>
+</div>
 <!-- SmartWizard html -->
 <div id="smartwizard">
 <ul>
@@ -173,7 +176,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.jobTitle">Title <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.jobTitle' id='sampleRequestContact.jobTitle' value="${applicationForm?.sampleRequestContact?.jobTitle}" placeholder='Enter Title'>
+                                            <input type='text' name='sampleRequestContact.jobTitle' id='sampleRequestContact.jobTitle' value="${applicationForm?.sampleRequestContact?.jobTitle}" placeholder='Enter Title' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -182,14 +185,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.firstName">First Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.firstName' id='sampleRequestContact.firstName' value="${applicationForm?.sampleRequestContact?.firstName}" placeholder='Enter First Name'>
+                                            <input type='text' name='sampleRequestContact.firstName' id='sampleRequestContact.firstName' value="${applicationForm?.sampleRequestContact?.firstName}" placeholder='Enter First Name' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.familyName">Family Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.familyName' id='sampleRequestContact.familyName' value="${applicationForm?.sampleRequestContact?.familyName}" placeholder='Enter Family Name'>
+                                            <input type='text' name='sampleRequestContact.familyName' id='sampleRequestContact.familyName' value="${applicationForm?.sampleRequestContact?.familyName}" placeholder='Enter Family Name' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -198,7 +201,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.workAddress">Work Address <span style="color: red">*</span></label><br>
-                                            <textarea name='sampleRequestContact.workAddress' id='sampleRequestContact.workAddress' placeholder='Enter Work Address'>${applicationForm?.sampleRequestContact?.workAddress}</textarea>
+                                            <textarea name='sampleRequestContact.workAddress' id='sampleRequestContact.workAddress' placeholder='Enter Work Address' required="">${applicationForm?.sampleRequestContact?.workAddress}</textarea>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -207,14 +210,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.telephoneNumber">Telephone Number <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.telephoneNumber' id='sampleRequestContact.telephoneNumber' value="${applicationForm?.sampleRequestContact?.telephoneNumber}" placeholder='Enter Telephone Number'>
+                                            <input type='text' name='sampleRequestContact.telephoneNumber' id='sampleRequestContact.telephoneNumber' value="${applicationForm?.sampleRequestContact?.telephoneNumber}" placeholder='Enter Telephone Number' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.emailAddress' id='sampleRequestContact.emailAddress' value="${applicationForm?.sampleRequestContact?.emailAddress}" placeholder='Enter Email Address'>
+                                            <input type='text' name='sampleRequestContact.emailAddress' id='sampleRequestContact.emailAddress' value="${applicationForm?.sampleRequestContact?.emailAddress}" placeholder='Enter Email Address' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -395,20 +398,71 @@
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <br>
                     <div class="row">
-                        <g:if test="${applicationForm?.ethicalApproval?.letter}">
+                        <g:if test="${applicationForm?.ethicalApproval}">
                             <div class="col-lg-12">
                                 <label for="ethicalApprovalLetter">Copy of the approval letter <span style="color: red">*</span></label><br>
-                                <label>${applicationForm?.ethicalApproval?.letter?.toString()?.split('_')?.last()}</label>
+                                %{--<label>${applicationForm?.ethicalApproval?.letter?.toString()?.split('_')?.last()}</label>--}%
                                 %{--<g:link action="download" id="${applicationForm?.ethicalApproval?.id}"> <a class="btn btn-danger btn-xs" href="#" onclick="showDeleteModal()"><i class="glyphicon glyphicon-trash"></i> Delete Letter & Reload</a></g:link>--}%
                             </div>
                         </g:if>
                         <g:else>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="ethicalApprovalLetter">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='ethicalApprovalLetter' id='ethicalApprovalLetter' required>
+                                    <label for="ethicalApprovalLetter1">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='ethicalApprovalLetter1' id='ethicalApprovalLetter1' required>
                                     <div class="help-block with-errors"></div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    %{--<label for="ethicalApprovalLetterPending">Pending?</label>--}%
+                                    %{--<input type="checkbox" name="ethicalApprovalLetterPending" id="ethicalApprovalLetterPending" onclick="ethicalApprovalLetterFunction()">--}%
+                                    %{--<div class="help-block with-errors"></div>--}%
+                                    <label for="ethicalApprovalLetterComplete">Have you uploaded all documents?</label><br>
+                                    <input type="radio" name="ethicalApprovalLetterComplete" value="Yes" onclick="ethicalApprovalLetterCompleteFunction()" required> Yes
+                                    <input type="radio" name="ethicalApprovalLetterComplete" onclick="ethicalApprovalLetterPending()" value="Pending"> Pending
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showEthicalApprovalLetter2">
+                                <div class="form-group">
+                                    <label for="ethicalApprovalLetter2">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='ethicalApprovalLetter2' id='ethicalApprovalLetter2' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showEthicalApprovalLetter3">
+                                <div class="form-group">
+                                    <label for="ethicalApprovalLetter3">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='ethicalApprovalLetter3' id='ethicalApprovalLetter3' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showEthicalApprovalLetter4">
+                                <div class="form-group">
+                                    <label for="ethicalApprovalLetter4">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='ethicalApprovalLetter4' id='ethicalApprovalLetter4' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showEthicalApprovalLetter5">
+                                <div class="form-group">
+                                    <label for="ethicalApprovalLetter5">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='ethicalApprovalLetter5' id='ethicalApprovalLetter5' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" id="hideEthicalApprovalLetter2">
+                                <p>
+                                    <label>Remove documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="hideEthicalApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Remove</button>
+                                </p>
+                            </div>
+                            <div class="col-lg-8">
+                                <p>
+                                    <label>Attach more documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="showEthicalApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Add</button>
+                                </p>
                             </div>
                         </g:else>
                     </div>
@@ -445,35 +499,78 @@
             </div>
             <br>
             <div class="card">
-                <div class="card-header"><b>Consent for use of data/tissues in research</b></div>
+                <div class="card-header"><b>Consent forms and PIS’s</b></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <br>
                     <div class="row">
-                        <g:if test="${applicationForm?.consentForUseInResearch?.form}">
+                        <g:if test="${applicationForm?.consentForUseInResearch}">
                             <div class="col-lg-12">
                                 <label for="consentForUseInResearchForm">Copy of the consent form <span style="color: red">*</span></label><br>
-                                <label>${applicationForm?.consentForUseInResearch?.form?.toString()?.split('_')?.last()}</label>
+                                %{--<label>${applicationForm?.consentForUseInResearch?.form?.toString()?.split('_')?.last()}</label>--}%
                                 %{--<g:link action="download" id="${applicationForm?.ethicalApproval?.id}"> <a class="btn btn-danger btn-xs" href="#" onclick="showDeleteModal()"><i class="glyphicon glyphicon-trash"></i> Delete Letter & Reload</a></g:link>--}%
                             </div>
                         </g:if>
                         <g:else>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="consentForUseInResearchForm">Please attach a copy of the consent form <span style="color: red">*</span></label><br>
-                                    <input type='file' name='consentForUseInResearchForm' id='consentForUseInResearchForm' required>
+                                    <label for="consentForUseInResearchForm1">Please attach all copies of consent forms and corresponding PIS’s. <span style="color: red">*</span></label><br>
+                                    <input type='file' name='consentForUseInResearchForm1' id='consentForUseInResearchForm1' required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                        </g:else>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="consentForUseInResearch.formType">Form type <span style="color: red">*</span></label>
-                                <g:select name="consentForUseInResearch.formType" from="['RTB consent form', 'NHS consent form', 'Study-specific consent form', 'Exempt']" value="${applicationForm?.consentForUseInResearch?.formType}" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
-                                <div class="help-block with-errors"></div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    %{--<label for="consentForUseInResearchFormPending">Pending?</label>--}%
+                                    %{--<input type="checkbox" name="consentForUseInResearchFormPending" id="consentForUseInResearchFormPending" onclick="consentForUseInResearchFormFunction()">--}%
+                                    %{--<div class="help-block with-errors"></div>--}%
+                                    <label for="consentForUseInResearchFormComplete">Have you uploaded all documents?</label><br>
+                                    <input type="radio" name="consentForUseInResearchFormComplete" value="Yes" onclick="consentForUseInResearchFormCompleteFunction()" required> Yes
+                                    <input type="radio" name="consentForUseInResearchFormComplete" onclick="consentForUseInResearchFormPending()" value="Pending"> Pending
+                                    <div class="help-block with-errors"></div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-lg-8" id="showConsentForUseInResearchForm2">
+                                <div class="form-group">
+                                    <label for="consentForUseInResearchForm2">Please attach all copies of consent forms and corresponding PIS’s. <span style="color: red">*</span></label><br>
+                                    <input type='file' name='consentForUseInResearchForm2' id='consentForUseInResearchForm2' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showConsentForUseInResearchForm3">
+                                <div class="form-group">
+                                    <label for="consentForUseInResearchForm3">Please attach all copies of consent forms and corresponding PIS’s. <span style="color: red">*</span></label><br>
+                                    <input type='file' name='consentForUseInResearchForm3' id='consentForUseInResearchForm3' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showConsentForUseInResearchForm4">
+                                <div class="form-group">
+                                    <label for="consentForUseInResearchForm4">Please attach all copies of consent forms and corresponding PIS’s. <span style="color: red">*</span></label><br>
+                                    <input type='file' name='consentForUseInResearchForm4' id='consentForUseInResearchForm4' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showConsentForUseInResearchForm5">
+                                <div class="form-group">
+                                    <label for="consentForUseInResearchForm5">Please attach all copies of consent forms and corresponding PIS’s. <span style="color: red">*</span></label><br>
+                                    <input type='file' name='consentForUseInResearchForm5' id='consentForUseInResearchForm5' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" id="hideConsentForUseInResearchForm2">
+                                <p>
+                                    <label></label><br>
+                                    <label>Remove documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="hideConsentForUseInResearchFormFunction()"><i class="fas fa-plus-circle"></i> Remove</button>
+                                </p>
+                            </div>
+                            <div class="col-lg-8">
+                                <p>
+                                    <label>Attach more documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="showConsentForUseInResearchFormFunction()"><i class="fas fa-plus-circle"></i> Add</button>
+                                </p>
+                            </div>
+                        </g:else>
                     </div>
                 </div>
             </div>
@@ -482,21 +579,79 @@
                 <div class="card-header"><b>R&D approval details</b></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <div class="row">
-                        <g:if test="${applicationForm?.randDApproval?.letter}">
+                        <g:if test="${applicationForm?.randDApproval}">
                             <div class="col-lg-12">
                                 <label for="consentForUseInResearchForm">Copy of the approval letter  <span style="color: red">*</span></label><br>
-                                <label>${applicationForm?.randDApproval?.letter?.toString()?.split('_')?.last()}</label>
+                                %{--<label>${applicationForm?.randDApproval?.letter?.toString()?.split('_')?.last()}</label>--}%
                                 %{--<g:link action="download" id="${applicationForm?.ethicalApproval?.id}"> <a class="btn btn-danger btn-xs" href="#" onclick="showDeleteModal()"><i class="glyphicon glyphicon-trash"></i> Delete Letter & Reload</a></g:link>--}%
                             </div>
                         </g:if>
                         <g:else>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="randDApprovalLetter">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='randDApprovalLetter' id='randDApprovalLetter' required>
+                                    <label for="randDApprovalLetter1">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='randDApprovalLetter1' id='randDApprovalLetter1' required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    %{--<label for="randDApprovalLetterPending">Pending?</label>--}%
+                                    %{--<input type="checkbox" name="randDApprovalLetterPending" id="randDApprovalLetterPending" onclick="randDApprovalLetterFunction()">--}%
+                                    %{--<div class="help-block with-errors"></div>--}%
+                                    <label for="randDApprovalLetterComplete">Have you uploaded all documents?</label><br>
+                                    <input type="radio" name="randDApprovalLetterComplete" value="Yes" onclick="randDApprovalLetterCompleteFunction()" required> Yes
+                                    <input type="radio" name="randDApprovalLetterComplete" value="Pending" onclick="randDApprovalLetterPending()"> Pending
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showRandDApprovalLetter2">
+                                <div class="form-group">
+                                    <label for="randDApprovalLetter2">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='randDApprovalLetter2' id='randDApprovalLetter2' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showRandDApprovalLetter3">
+                                <div class="form-group">
+                                    <label for="randDApprovalLetter3">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='randDApprovalLetter3' id='randDApprovalLetter3' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showRandDApprovalLetter4">
+                                <div class="form-group">
+                                    <label for="randDApprovalLetter4">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='randDApprovalLetter4' id='randDApprovalLetter4' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showRandDApprovalLetter5">
+                                <div class="form-group">
+                                    <label for="randDApprovalLetter5">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='randDApprovalLetter5' id='randDApprovalLetter5' required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" id="hideRandDApprovalLetter2">
+                                <p>
+                                    <label>Remove documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="hideRandDApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Remove</button>
+                                </p>
+                            </div>
+                            <div class="col-lg-8">
+                                <p>
+                                    <label>Attach more documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="showRandDApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Add</button>
+                                </p>
+                            </div>
+                            %{--<div class="col-lg-4">--}%
+                                %{--<div class="form-group">--}%
+                                    %{--<label for="randDApprovalLetterComplete">Complete?</label>--}%
+                                    %{--<input type="checkbox" name="randDApprovalLetterComplete" id="randDApprovalLetterComplete">--}%
+                                    %{--<div class="help-block with-errors"></div>--}%
+                                %{--</div>--}%
+                            %{--</div>--}%
                         </g:else>
                     </div>
                     <div class="row">
@@ -531,6 +686,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
+                                <label for="registrationOnPortfolio">Please select <span style="color: red">*</span></label><br>
+                                <g:select name="registrationOnPortfolio" id="registrationOnPortfolio" from="['Registered to a portfolio', 'Not registered on a portfolio']" onChange="registrationOnPortfolioNameShow()" value="${applicationForm?.registrationOnPortfolio}" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" id="registrationOnPortfolioNameSection">
+                            <div class="form-group">
                                 <label for="registrationOnPortfolioName">Name of portfolio <span style="color: red">*</span></label><br>
                                 <input type='text' name='registrationOnPortfolioName' id='registrationOnPortfolioName' value="${applicationForm?.registrationOnPortfolioName}" placeholder='Enter Name of portfolio' required>
                                 <div class="help-block with-errors"></div>
@@ -564,26 +726,76 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="mTAArranged">Please select <span style="color: red">*</span></label><br>
-                                <g:select name="mTAArranged" id="mTAArranged" from="['Yes', 'No Needed', 'Within CTA']" value="${applicationForm?.mTAArranged}" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <g:select name="mTAArranged" id="mTAArranged" from="['Yes', 'No Needed', 'Within CTA']" value="${applicationForm?.mTAArranged}" onChange="showMTAOrCTA()" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="mTAOrCTA">
                         <g:if test="${applicationForm?.mTAOrCTA}">
                             <div class="col-lg-12">
                                 <label for="consentForUseInResearchForm">Copy of the MTA or CTA <span style="color: red">*</span></label><br>
                                 <label>${applicationForm?.mTAOrCTA?.toString()?.split('_')?.last()}</label>
-                                %{--<g:link action="download" id="${applicationForm?.ethicalApproval?.id}"> <a class="btn btn-danger btn-xs" href="#" onclick="showDeleteModal()"><i class="glyphicon glyphicon-trash"></i> Delete Letter & Reload</a></g:link>--}%
                             </div>
                         </g:if>
                         <g:else>
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="mTAOrCTA">Please attach a copy of the MTA or CTA <span style="color: red">*</span></label><br>
-                                    <input type='file' name='mTAOrCTA' id='mTAOrCTA' required="">
+                                    <label for="mTAOrCTA1">Please attach a copy of the MTA or CTA <span style="color: red">*</span></label><br>
+                                    <input type='file' name='mTAOrCTA1' id='mTAOrCTA1'>
                                     <div class="help-block with-errors"></div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    %{--<label for="mTAOrCTAPending">Pending?</label>--}%
+                                    %{--<input type="checkbox" name="mTAOrCTAPending" id="mTAOrCTAPending" onclick="mTAOrCTAFunction()">--}%
+                                    %{--<div class="help-block with-errors"></div>--}%
+                                    <label for="mTAOrCTAComplete">Have you uploaded all documents?</label><br>
+                                    <input type="radio" name="mTAOrCTAComplete" id="mTAOrCTAComplete" value="Yes" onclick="mTAOrCTACompleteFunction()" required> Yes
+                                    <input type="radio" name="mTAOrCTAComplete" value="Pending" onclick="mTAOrCTAPending()"> Pending
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showMTAOrCTA2">
+                                <div class="form-group">
+                                    <label for="mTAOrCTA2">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='mTAOrCTA2' id='mTAOrCTA2'>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showMTAOrCTA3">
+                                <div class="form-group">
+                                    <label for="mTAOrCTA3">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='mTAOrCTA3' id='mTAOrCTA3'>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showMTAOrCTA4">
+                                <div class="form-group">
+                                    <label for="mTAOrCTA4">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='mTAOrCTA4' id='mTAOrCTA4'>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8" id="showMTAOrCTA5">
+                                <div class="form-group">
+                                    <label for="mTAOrCTA5">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
+                                    <input type='file' name='mTAOrCTA5' id='mTAOrCTA5'>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" id="hideMTAOrCTA2">
+                                <p>
+                                    <label>Remove documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="hideMTAOrCTAFunction()"><i class="fas fa-plus-circle"></i> Remove</button>
+                                </p>
+                            </div>
+                            <div class="col-lg-8">
+                                <p>
+                                    <label>Attach more documents </label><br>
+                                    <button class="btn btn-light" type="button" onclick="showMTAOrCTAFunction()"><i class="fas fa-plus-circle"></i> Add</button>
+                                </p>
                             </div>
                         </g:else>
                     </div>
@@ -619,17 +831,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                <label for="trial.recruitedNumber">Estimated number of recruited in Oxford <span style="color: red">*</span></label>
+                                <input type='text' name='trial.recruitedNumber' id='trial.recruitedNumber' value="${applicationForm?.trial?.recruitedNumber}" placeholder='Enter number' required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <br>
             <div class="card">
-                <div class="card-header"><b>Lay summary</b>  (this may be made available on the OCHRe website, please advise if confidential)</div>
+                <div class="card-header"><b>Lay summary</b>  (this may be made available on the OCHRe website, please advise if confidential)<span style="color: red">*</span></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <br>
                     <div class="row">
                         <div class="col-lg-6">
                             <p>
-                                <textarea rows="4" cols="50" type='text' name='trial.laySummary' id='trial.laySummary' placeholder=''>${applicationForm?.trial?.laySummary}</textarea>
+                                <textarea rows="4" cols="50" type='text' name='trial.laySummary' id='trial.laySummary' placeholder='' required="">${applicationForm?.trial?.laySummary}</textarea>
                             </p>
                         </div>
                     </div>
@@ -644,7 +865,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="trial.nHSPathologist">Please select <span style="color: red">*</span></label><br>
-                                <g:select name="trial.nHSPathologist" from="['Yes', 'No']" value="${applicationForm?.trial?.nHSPathologist}" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <g:select name="trial.nHSPathologist" id="nHSPathologist" from="['Yes', 'No']" value="${applicationForm?.trial?.nHSPathologist}" noSelection="['':'']" style="width:180px;height:30px;" required="" onchange="nhsPathologistShow()"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" id="nHSPathologistName">
+                            <div class="form-group">
+                                <label for="pathologistName">Pathologist Name <span style="color: red">*</span></label>
+                                <input type='text' name='trial.pathologistName' id='pathologistName' value="${applicationForm?.trial?.pathologistName}" placeholder='Enter Expected duration' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -665,57 +893,56 @@
                 <div class="card-header"><b>Please identify every sample that the study requires (per patient)</b></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <br>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="timePoint">Timepoint <span style="color: red">*</span></label><br>
-                                <g:select name="timePoint" id="timePoint"  from="['Screening', 'Disease progression', 'End of study']" value="${applicationForm?.timePoint}" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row" id="sample1">
                         <div class="col-lg-6">
                             <div class="form-group">
+                                <label for="timePoint1">Timepoint <span style="color: red">*</span></label><br>
+                                <g:select name="timePoint1" id="timePoint1"  from="['Screening', 'Disease progression', 'End of study']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
                                 <label for="sampleSampleType1">What is required? <span style="color: red">*</span></label><br>
-                                <g:select name="sample.sampleType1" id="sampleSampleType1" onChange="unstainedSection1()" from="['Unstained sections', 'Study samples that need processing and embedding, to turn it into a FFPE block', 'Archival block']" noSelection="['':'']" style="width:440px;height:30px;"/>
+                                <g:select name="sample.sampleType1" id="sampleSampleType1" onChange="unstainedSection1()" from="['Unstained sections', 'Study samples that need processing and embedding, to turn it into a FFPE block', 'Archival block']" noSelection="['':'']" style="width:440px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                     </div>
+                    <p style="color: blue" id="archivalNote1">If the study accepts sections or a block, please select unstained sections instead.  If having the block is imperative to the study, then extra consent may be needed if the study consent form does not adequately state the risks of blocks no longer being in the archive.</p>
                     <div class="row" id="unstainedSections1">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.slideNumber1">Number of sections <span style="color: red">*</span></label><br>
-                                <input type='text' name='sample.slideNumber1' id='sample.slideNumber1' placeholder='Enter number of sections'>
+                                <input type='text' name='sample.slideNumber1' id='sample.slideNumber1' placeholder='Enter number of sections' required="">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.slideThickness1">Thickness of sections <span style="color: red">*</span> </label><br>
-                                <input type='text' name='sample.slideThickness1' id='sample.slideThickness1' placeholder='Enter thickness of sections'>
+                                <input type='text' name='sample.slideThickness1' id='sample.slideThickness1' placeholder='Enter thickness of sections' required="">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.slideType1">Type of slide <span style="color: red">*</span></label><br>
-                                <g:select name="sample.slideType1" id="sample.slideType1" from="['Charged', 'Uncharged']" noSelection="['':'']" style="width:180px;height:30px;"/>
+                                <g:select name="sample.slideType1" id="sample.slideType1" from="['Charged', 'Uncharged']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.stained1">Do any need to be stained? <span style="color: red">*</span></label><br>
-                                <g:select name="sample.stained1" id="sampleStained1" from="['Yes', 'No']" onchange="showStainedSpecify1Display()" noSelection="['':'']" style="width:180px;height:30px;"/>
+                                <g:select name="sample.stained1" id="sampleStained1" from="['Yes', 'No']" onchange="showStainedSpecify1Display()" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6" id="stainedSpecify1Display">
                             <div class="form-group">
-                                <label for="sample.stainedSpecify1">Please specify <span style="color: red">*</span></label><br>
-                                <textarea rows="4" cols="50" type='text' name='sample.stainedSpecify1' id='sample.stainedSpecify1' placeholder=''></textarea>
+                                <label for="sample.stainedSpecify1">Please specify staining <span style="color: red">*</span></label><br>
+                                <textarea rows="4" cols="50" type='text' name='sample.stainedSpecify1' id='sample.stainedSpecify1' placeholder='' required=""></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -731,51 +958,59 @@
                     <div class="row" id="sample2">
                         <div class="col-lg-6">
                             <div class="form-group">
+                                <label for="timePoint2">Timepoint <span style="color: red">*</span></label><br>
+                                <g:select name="timePoint2" id="timePoint2"  from="['Screening', 'Disease progression', 'End of study']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
                                 <label for="sample.sampleType2">What is required? <span style="color: red">*</span></label><br>
-                                <g:select name="sample.sampleType2" id="sampleSampleType2" onChange="unstainedSection2()" from="['Unstained sections', 'Study samples that need processing and embedding, to turn it into a FFPE block', 'Archival block']" value="" noSelection="['':'']" style="width:440px;height:30px;"/>
+                                <g:select name="sample.sampleType2" id="sampleSampleType2" onChange="unstainedSection2()" from="['Unstained sections', 'Study samples that need processing and embedding, to turn it into a FFPE block', 'Archival block']" value="" noSelection="['':'']" style="width:440px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                     </div>
+                    <p style="color: blue" id="archivalNote2">If the study accepts sections or a block, please select unstained sections instead.  If having the block is imperative to the study, then extra consent may be needed if the study consent form does not adequately state the risks of blocks no longer being in the archive.</p>
                     <div class="row" id="unstainedSections2">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sampleSlideNumber2">Number of sections <span style="color: red">*</span></label><br>
-                                <input type='text' name='sample.slideNumber2' id='sampleSlideNumber2' placeholder='Enter number of sections'>
+                                <input type='text' name='sample.slideNumber2' id='sampleSlideNumber2' placeholder='Enter number of sections' required="">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.slideThickness2">Thickness of sections <span style="color: red">*</span> </label><br>
-                                <input type='text' name='sample.slideThickness2' id='sample.slideThickness2' placeholder='Enter thickness of sections'>
+                                <input type='text' name='sample.slideThickness2' id='sample.slideThickness2' placeholder='Enter thickness of sections' required="">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.slideType2">Type of slide <span style="color: red">*</span></label><br>
-                                <g:select name="sample.slideType2" id="sample.slideType2" from="['Charged', 'Uncharged']" noSelection="['':'']" style="width:180px;height:30px;"/>
+                                <g:select name="sample.slideType2" id="sample.slideType2" from="['Charged', 'Uncharged']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="sample.stained2">Do any need to be stained? <span style="color: red">*</span></label><br>
-                                <g:select name="sample.stained2" id="sampleStained2" from="['Yes', 'No']" onchange="showStainedSpecify2Display()" noSelection="['':'']" style="width:180px;height:30px;"/>
+                                <g:select name="sample.stained2" id="sampleStained2" from="['Yes', 'No']" onchange="showStainedSpecify2Display()" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6" id="stainedSpecify2Display">
                             <div class="form-group">
-                                <label for="sample.stainedSpecify2">Please specify <span style="color: red">*</span></label><br>
-                                <textarea rows="4" cols="50" type='text' name='sample.stainedSpecify2' id='sample.stainedSpecify2' placeholder=''></textarea>
+                                <label for="sample.stainedSpecify2">Please specify staining <span style="color: red">*</span></label><br>
+                                <textarea rows="4" cols="50" type='text' name='sample.stainedSpecify2' id='sample.stainedSpecify2' placeholder='' required=""></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="sample.specialRequirements2">Any special requirements (labelling or cutting process)</label>
+                                <label for="sample.specialRequirements2">Any special requirements (labelling or cleaning process)</label>
                                 <textarea rows="4" cols="50" type='text' name='sample.specialRequirements2' id='sample.specialRequirements2' placeholder=''></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -793,7 +1028,7 @@
             </div>
             <br>
             <div class="card">
-                <div class="card-header"><b>How will material be used?</b>  (How will you use the materials requested in this application? For trials: include whether it is for screening (eligibility assessment), primary or secondary outcome measures, and/ or exploratory objectives?)</div>
+                <div class="card-header"><b>How will material be used?</b>  (How will you use the materials requested in this application? For trials: include whether it is for screening (eligibility assessment), primary or secondary outcome measures, and/ or exploratory objectives?)<span style="color: red">*</span></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <br>
                     <div class="row">
@@ -831,7 +1066,7 @@
             </div>
             <br>
             <div class="card">
-                <div class="card-header"><b>Is there a clinical trial that we or the pathologist have to complete?</b></div>
+                <div class="card-header"><b>Is there a clinical trial specific form that we or the pathologist have to complete?</b></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <br>
                     <div class="row">
@@ -853,7 +1088,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="terms">I agree with the T&C</label>
+                                <label for="terms">I agree with the <a href="${assetPath(src: 't&cv3.pdf')}" target="_blank">T&C </a><span style="color: red">*</span></label>
                                 <input type="checkbox" id="terms" data-error="Please accept the Terms and Conditions" required>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -888,7 +1123,15 @@
         var btnSubmit = $('<button></button>').text('Submit')
                 .addClass('btn btn-danger')
                 .on('click', function(){
-                    document.forms[4].submit()
+                    var elmForm = $("#form-step-4");
+                    elmForm.validator('validate');
+                    var elmErr = elmForm.find('.has-error');
+                    if(elmErr && elmErr.length > 0){
+                        // Form validation failed
+                        return false;
+                    }else{
+                        document.forms[4].submit()
+                    }
                 });
         $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
             // Enable finish button only on last step
@@ -912,7 +1155,7 @@
                 markDoneStep: true, // add done css
                 markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
                 removeDoneStepOnNavigateBack: false, // While navigate back done step after active step will be cleared
-                enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+                enableAnchorOnDoneStep: false // Enable/Disable the done steps navigation
             },
             lang: {
                 next:'Save & Next'
@@ -961,16 +1204,70 @@
     }
     function unstainedSection1(){
         if ($("#sampleSampleType1").val() == 'Unstained sections' ){
-            $("#unstainedSections1").show()
+            $("#unstainedSections1").show();
+            document.getElementById("sample.slideNumber1").required = true;
+            document.getElementById("sample.slideThickness1").required = true;
+            document.getElementById("sample.slideType1").required = true;
+            document.getElementById("sampleStained1").required = true;
+            $("#archivalNote1").hide()
+        }else if($("#sampleSampleType1").val() == 'Archival block'){
+            $("#unstainedSections1").hide();
+            $("#archivalNote1").show();
+            document.getElementById("sample.slideNumber1").required = false;
+            document.getElementById("sample.slideThickness1").required = false;
+            document.getElementById("sample.slideType1").required = false;
+            document.getElementById("sampleStained1").required = false;
         }else{
-            $("#unstainedSections1").hide()
+            $("#unstainedSections1").hide();
+            $("#archivalNote1").hide();
+            document.getElementById("sample.slideNumber1").required = false;
+            document.getElementById("sample.slideThickness1").required = false;
+            document.getElementById("sample.slideType1").required = false;
+            document.getElementById("sampleStained1").required = false;
+        }
+    }
+    registrationOnPortfolioNameShow();
+    function registrationOnPortfolioNameShow(){
+        if ($("#registrationOnPortfolio").val() == 'Registered to a portfolio' ){
+            $("#registrationOnPortfolioNameSection").show();
+            document.getElementById("registrationOnPortfolioName").required = true;
+        }else{
+            $("#registrationOnPortfolioNameSection").hide();
+            document.getElementById("registrationOnPortfolioName").required = false;
+        }
+    }
+    nhsPathologistShow();
+    function nhsPathologistShow(){
+        if ($("#nHSPathologist").val() == 'Yes' ){
+            $("#nHSPathologistName").show();
+            document.getElementById("pathologistName").required = true;
+        }else{
+            $("#nHSPathologistName").hide();
+            document.getElementById("pathologistName").required = false;
         }
     }
     function unstainedSection2(){
         if ($("#sampleSampleType2").val() == 'Unstained sections' ){
-            $("#unstainedSections2").show()
-        }else{
-            $("#unstainedSections2").hide()
+            $("#unstainedSections2").show();
+            document.getElementById("sampleSlideNumber2").required = true;
+            document.getElementById("sample.slideThickness2").required = true;
+            document.getElementById("sample.slideType2").required = true;
+            document.getElementById("sampleStained2").required = true;
+            $("#archivalNote2").hide();
+        }else if($("#sampleSampleType2").val() == 'Archival block'){
+            $("#unstainedSections1").hide();
+            $("#archivalNote2").show();
+            document.getElementById("sampleSlideNumber2").required = false;
+            document.getElementById("sample.slideThickness2").required = false;
+            document.getElementById("sample.slideType2").required = false;
+            document.getElementById("sampleStained2").required = false;
+         }else{
+            $("#unstainedSections2").hide();
+            $("#archivalNote2").hide();
+            document.getElementById("sampleSlideNumber2").required = false;
+            document.getElementById("sample.slideThickness2").required = false;
+            document.getElementById("sample.slideType2").required = false;
+            document.getElementById("sampleStained2").required = false;
         }
     }
     function showSample2(){
@@ -978,7 +1275,13 @@
         $("#stainedSpecify2Display").hide()
     }
     function hideSample2(){
-        $("#sample2").hide()
+        $("#sample2").hide();
+        document.getElementById("timePoint2").required = false;
+        document.getElementById("sampleSampleType2").required = false;
+        document.getElementById("sampleSlideNumber2").required = false;
+        document.getElementById("sample.slideThickness2").required = false;
+        document.getElementById("sample.slideType2").required = false;
+        document.getElementById("sampleStained2").required = false;
     }
     showCompanyName();
     function showCompanyName(){
@@ -1011,6 +1314,7 @@
             document.getElementById("sample.stainedSpecify1").required = false;
         }
     }
+    showStainedSpecify2Display();
     function showStainedSpecify2Display(){
         if ($("#sampleStained2").val()  == 'Yes'){
             $("#stainedSpecify2Display").show();
@@ -1019,6 +1323,155 @@
             $("#stainedSpecify2Display").hide();
             document.getElementById("sample.stainedSpecify2").required = false;
         }
+    }
+    showMTAOrCTA();
+    function showMTAOrCTA(){
+        if ($("#mTAArranged").val()  == 'No Needed'){
+            $("#mTAOrCTA").hide();
+            document.getElementById("mTAOrCTA1").required = false;
+            document.getElementById("mTAOrCTAComplete").required = false;
+        }else{
+            $("#mTAOrCTA").show();
+            document.getElementById("mTAOrCTA1").required = true;
+            document.getElementById("mTAOrCTAComplete").required = true;
+        }
+    }
+    var countEthicalApprovalLetter = 2;
+    setupEthicalApprovalLetter();
+    function setupEthicalApprovalLetter(){
+        var i;
+        for (i = countEthicalApprovalLetter; i < 6; i ++) {
+            $("#showEthicalApprovalLetter"+i).hide();
+            $("#hideEthicalApprovalLetter"+i).hide();
+            document.getElementById("ethicalApprovalLetter"+i).required = false;
+        }
+    }
+    function showEthicalApprovalLetterFunction(){
+        $("#showEthicalApprovalLetter"+countEthicalApprovalLetter).show();
+        document.getElementById("ethicalApprovalLetter"+countEthicalApprovalLetter).required = true;
+        $("#hideEthicalApprovalLetter"+countEthicalApprovalLetter).show();
+        if(countEthicalApprovalLetter >5){
+            countEthicalApprovalLetter = 5
+        }
+        countEthicalApprovalLetter++;
+    }
+    function hideEthicalApprovalLetterFunction(){
+        countEthicalApprovalLetter--;
+        $("#showEthicalApprovalLetter"+countEthicalApprovalLetter).hide();
+        document.getElementById("ethicalApprovalLetter"+countEthicalApprovalLetter).required = false;
+        $("#hideEthicalApprovalLetter"+countEthicalApprovalLetter).hide();
+        if(countEthicalApprovalLetter < 2){
+            countEthicalApprovalLetter = 2
+        }
+
+    }
+    var countConsentForUseInResearchForm = 2;
+    setupConsentForUseInResearchForm();
+    function setupConsentForUseInResearchForm(){
+        var i;
+        for (i = countConsentForUseInResearchForm; i < 6; i ++) {
+            $("#showConsentForUseInResearchForm"+i).hide();
+            $("#hideConsentForUseInResearchForm"+i).hide();
+            document.getElementById("consentForUseInResearchForm"+i).required = false;
+        }
+    }
+    function showConsentForUseInResearchFormFunction(){
+        $("#showConsentForUseInResearchForm"+countConsentForUseInResearchForm).show();
+        document.getElementById("consentForUseInResearchForm"+countConsentForUseInResearchForm).required = true;
+        $("#hideConsentForUseInResearchForm"+countConsentForUseInResearchForm).show();
+        if(countConsentForUseInResearchForm >5){
+            countConsentForUseInResearchForm = 5
+        }
+        countConsentForUseInResearchForm++;
+    }
+    function hideConsentForUseInResearchFormFunction(){
+        countConsentForUseInResearchForm--;
+        $("#showConsentForUseInResearchForm"+countConsentForUseInResearchForm).hide();
+        document.getElementById("consentForUseInResearchForm"+countConsentForUseInResearchForm).required = false;
+        $("#hideConsentForUseInResearchForm"+countConsentForUseInResearchForm).hide();
+        if(countConsentForUseInResearchForm < 2){
+            countConsentForUseInResearchForm = 2
+        }
+    }
+    var countRandDApprovalLetter = 2;
+    setupRandDApprovalLetter();
+    function setupRandDApprovalLetter(){
+        var i;
+        for (i = countRandDApprovalLetter; i < 6; i ++) {
+            $("#showRandDApprovalLetter"+i).hide();
+            $("#hideRandDApprovalLetter"+i).hide();
+            document.getElementById("randDApprovalLetter"+i).required = false;
+        }
+    }
+    function showRandDApprovalLetterFunction(){
+        $("#showRandDApprovalLetter"+countRandDApprovalLetter).show();
+        document.getElementById("randDApprovalLetter"+countRandDApprovalLetter).required = true;
+        $("#hideRandDApprovalLetter"+countRandDApprovalLetter).show();
+        if(countRandDApprovalLetter >5){
+            countRandDApprovalLetter = 5
+        }
+        countRandDApprovalLetter++;
+    }
+    function hideRandDApprovalLetterFunction(){
+        countRandDApprovalLetter--;
+        $("#showRandDApprovalLetter"+countRandDApprovalLetter).hide();
+        document.getElementById("randDApprovalLetter"+countRandDApprovalLetter).required = false;
+        $("#hideRandDApprovalLetter"+countRandDApprovalLetter).hide();
+        if(countRandDApprovalLetter < 2){
+            countRandDApprovalLetter = 2
+        }
+    }
+    var countMTAOrCTA = 2;
+    setupMTAOrCTA();
+    function setupMTAOrCTA(){
+        var i;
+        for (i = countMTAOrCTA; i < 6; i ++) {
+            $("#showMTAOrCTA"+i).hide();
+            $("#hideMTAOrCTA"+i).hide();
+            document.getElementById("mTAOrCTA"+i).required = false;
+        }
+    }
+    function showMTAOrCTAFunction(){
+        $("#showMTAOrCTA"+countMTAOrCTA).show();
+        document.getElementById("mTAOrCTA"+countMTAOrCTA).required = true;
+        $("#hideMTAOrCTA"+countMTAOrCTA).show();
+        if(countMTAOrCTA >5){
+            countMTAOrCTA = 5
+        }
+        countMTAOrCTA++;
+    }
+    function hideMTAOrCTAFunction(){
+        countMTAOrCTA--;
+        $("#showMTAOrCTA"+countMTAOrCTA).hide();
+        document.getElementById("mTAOrCTA"+countMTAOrCTA).required = false;
+        $("#hideMTAOrCTA"+countMTAOrCTA).hide();
+        if(countMTAOrCTA < 2){
+            countMTAOrCTA = 2
+        }
+    }
+    function ethicalApprovalLetterPending(){
+        document.getElementById("ethicalApprovalLetter1").required = false;
+    }
+    function ethicalApprovalLetterCompleteFunction(){
+        document.getElementById("ethicalApprovalLetter1").required = true;
+    }
+    function consentForUseInResearchFormPending(){
+        document.getElementById("consentForUseInResearchForm1").required = false;
+    }
+    function consentForUseInResearchFormCompleteFunction(){
+        document.getElementById("consentForUseInResearchForm1").required = true;
+    }
+    function randDApprovalLetterPending(){
+        document.getElementById("randDApprovalLetter1").required = false;
+    }
+    function randDApprovalLetterCompleteFunction(){
+        document.getElementById("randDApprovalLetter1").required = true;
+    }
+    function mTAOrCTAPending(){
+        document.getElementById("mTAOrCTA1").required = false;
+    }
+    function mTAOrCTACompleteFunction(){
+        document.getElementById("mTAOrCTA1").required = true;
     }
 </script>
 </body>

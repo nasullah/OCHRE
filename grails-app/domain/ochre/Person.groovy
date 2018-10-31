@@ -2,6 +2,12 @@ package ochre
 
 class Person {
 
+    static mapping = {
+        jobTitle type: "text"
+        emailAddress type: "text"
+        telephoneNumber type: "text"
+        workAddress type: "text"
+    }
     static auditable = true
     static constraints = {
         familyName()
