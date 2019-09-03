@@ -4,27 +4,32 @@ class Trial {
 
     static mapping = {
         trialTitle type: "text"
-        expectedDuration type: "text"
-        recruitedNumber type: "text"
+        recruitmentAgreedTarget type: "text"
         laySummary type: "text"
         pathologistName type: "text"
+        sponsor type: "text"
+        protocolSynopsis type: "text"
     }
     static auditable = true
     static constraints = {
         trialTitle()
-        expectedDuration()
-        recruitedNumber(nullable: true)
+        siteEndDate()
+        recruitmentAgreedTarget(nullable: true)
         laySummary widget: 'textarea'
         nHSPathologist()
         pathologistName(nullable: true)
+        sponsor()
+        protocolSynopsis()
     }
 
     String trialTitle
-    String expectedDuration
+    Date siteEndDate
     String laySummary
     String nHSPathologist
     String pathologistName
-    String recruitedNumber
+    String recruitmentAgreedTarget
+    String sponsor
+    String protocolSynopsis
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {

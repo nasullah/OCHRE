@@ -3,28 +3,23 @@ package ochre
 class RandDApproval {
 
     static mapping = {
-        referenceNo type: "text"
-        bodyName type: "text"
+        organisation type: "text"
+        pid type: "text"
         otherInformation type: "text"
     }
-    static hasMany = [randDApprovalLetter:RandDApprovalLetter]
     static auditable = true
     static constraints = {
-        referenceNo()
-        bodyName()
+        pid()
+        organisation()
         otherInformation widget: 'textarea'
-        randDApprovalLetterPending (nullable: true)
-        randDApprovalLetterComplete(nullable: true)
     }
 
-    String referenceNo
-    String bodyName
+    String pid
+    String organisation
     String otherInformation
-    boolean randDApprovalLetterPending = Boolean.FALSE
-    boolean randDApprovalLetterComplete = Boolean.FALSE
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {
-        return "${referenceNo}";
+        return "${pid}";
     }
 }

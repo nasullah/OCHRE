@@ -10,16 +10,14 @@ class Person {
     }
     static auditable = true
     static constraints = {
-        familyName()
-        firstName()
+        name()
         jobTitle()
         workAddress widget: 'textarea'
         telephoneNumber()
         emailAddress()
     }
 
-    String familyName
-    String firstName
+    String name
     String jobTitle
     String workAddress
     String telephoneNumber
@@ -27,6 +25,6 @@ class Person {
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {
-        return "${firstName} ${familyName}";
+        return "${name}";
     }
 }

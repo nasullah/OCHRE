@@ -34,6 +34,7 @@ class ApplicationForm {
         clinicalTrialForm(nullable: true)
         applicationType(nullable: true)
         applicationOwner()
+        terms(nullable: true)
     }
 
     Person leadApplicant
@@ -63,6 +64,7 @@ class ApplicationForm {
     String clinicalTrialForm
     ApplicationType applicationType
     User applicationOwner
+    boolean terms = Boolean.FALSE
 
     @Override	// Override toString for a nicer / more descriptive UI
     public String toString() {

@@ -27,13 +27,13 @@
                 If a diagnostic sample is needed for a clinical trial and the clinical trial has not already been set up with ourselves, then please use the online ‘create an application’ form.  If you already have an OCHRe application number for this trial, e.g. 17/A123, 18/A123, you will not need to complete this form again.
             </p>
             <p align="justify">
-                This website will allow users to create login in details, create clinical trial applications using the online form, track the progress of the application from submission to approval and view all previous applications made to us.
+                This website will allow users to create login in details, create clinical trial applications using the online form, track the progress of the application from submission to approval and view all previous applications made to us through this portal.
             </p>
             <p>
                 You will need to read and agree to our terms and conditions, before you can submit an application, so please ensure a copy of this is read and kept on file for future reference.
             </p>
             <p align="justify">
-                The online application is made up of 5 sections, and you will be able to save a draft and come back to it if you do not have all the information and documents needed to submit the form.  This form needs to be completed fully, and you will not be able to submit the form if all mandatory fields aren’t completed.  Once submitted, you will not be able to make changes to the form again, so if you have any questions regarding the application, please do contact us before you submit.
+                The online application is made up of 5 sections, and you will be able to save a draft and come back to it if you do not have all the information and documents needed to submit the form.  This form needs to be completed fully, and you will not be able to submit the form if all mandatory fields aren’t completed.  Once submitted, you will not be able to make changes to the form on this portal, so if you have any questions regarding the application, please do contact us before you submit. Amendments (as submitted to REC) will be managed by email, not through this App.
             </p>
             <p align="justify">
                 If you do not complete the form properly, you will be notified to go back and make adjustments before we will accept a submitted application.  This will delay getting the approval for the trial.

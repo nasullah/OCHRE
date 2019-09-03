@@ -35,9 +35,9 @@
         <tbody>
         <g:each in="${filteredApplicationList}" status="i" var="applicationInstance">
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                <td>${fieldValue(bean: applicationInstance?.leadApplicant, field: "jobTitle")} ${fieldValue(bean: applicationInstance?.leadApplicant, field: "firstName")} ${fieldValue(bean: applicationInstance?.leadApplicant, field: "familyName")}</td>
+                <td>${fieldValue(bean: applicationInstance?.leadApplicant, field: "jobTitle")} ${fieldValue(bean: applicationInstance?.leadApplicant, field: "name")}</td>
 
-                <td>${fieldValue(bean: applicationInstance?.contactPerson, field: "jobTitle")} ${fieldValue(bean: applicationInstance?.contactPerson, field: "firstName")} ${fieldValue(bean: applicationInstance?.contactPerson, field: "familyName")}</td>
+                <td>${fieldValue(bean: applicationInstance?.contactPerson, field: "jobTitle")} ${fieldValue(bean: applicationInstance?.contactPerson, field: "name")}</td>
 
                 <td>${fieldValue(bean: applicationInstance?.trial, field: "trialTitle")}</td>
 

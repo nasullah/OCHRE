@@ -154,74 +154,6 @@
             </div>
             <br>
         </g:if>
-        <g:if test="${applicationForm?.randDApproval?.randDApprovalLetterPending}">
-            <div class="card">
-                <div class="card-header"><b>R&D approval letter</b></div>
-                <div class="card-block p-0" style="margin: auto;width: 50%">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="randDApprovalLetter1">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                <input type='file' name='randDApprovalLetter1' id='randDApprovalLetter1' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                %{--<label for="randDApprovalLetterPending">Pending?</label>--}%
-                                %{--<input type="checkbox" name="randDApprovalLetterPending" id="randDApprovalLetterPending" onclick="randDApprovalLetterFunction()">--}%
-                                %{--<div class="help-block with-errors"></div>--}%
-                                <label for="randDApprovalLetterComplete">Have you uploaded all documents?</label><br>
-                                <input type="radio" name="randDApprovalLetterComplete" value="Yes" onclick="randDApprovalLetterCompleteFunction()" required> Yes
-                                <input type="radio" name="randDApprovalLetterComplete" value="Pending" onclick="randDApprovalLetterPending()"> Pending
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8" id="showRandDApprovalLetter2">
-                            <div class="form-group">
-                                <label for="randDApprovalLetter2">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                <input type='file' name='randDApprovalLetter2' id='randDApprovalLetter2' required="">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8" id="showRandDApprovalLetter3">
-                            <div class="form-group">
-                                <label for="randDApprovalLetter3">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                <input type='file' name='randDApprovalLetter3' id='randDApprovalLetter3' required="">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8" id="showRandDApprovalLetter4">
-                            <div class="form-group">
-                                <label for="randDApprovalLetter4">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                <input type='file' name='randDApprovalLetter4' id='randDApprovalLetter4' required="">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8" id="showRandDApprovalLetter5">
-                            <div class="form-group">
-                                <label for="randDApprovalLetter5">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                <input type='file' name='randDApprovalLetter5' id='randDApprovalLetter5' required="">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4" id="hideRandDApprovalLetter2">
-                            <p>
-                                <label>Remove documents </label><br>
-                                <button class="btn btn-light" type="button" onclick="hideRandDApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Remove</button>
-                            </p>
-                        </div>
-                        <div class="col-lg-8">
-                            <p>
-                                <label>Attach more documents </label><br>
-                                <button class="btn btn-light" type="button" onclick="showRandDApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Add</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </g:if>
         <g:if test="${applicationForm?.mTAOrCTA?.mTAOrCTAPending}">
             <div class="card">
                 <div class="card-header"><b>Copy of the MTA or CTA</b></div>
@@ -365,34 +297,6 @@
             countConsentForUseInResearchForm = 2
         }
     }
-    var countRandDApprovalLetter = 2;
-    setupRandDApprovalLetter();
-    function setupRandDApprovalLetter(){
-        var i;
-        for (i = countRandDApprovalLetter; i < 6; i ++) {
-            $("#showRandDApprovalLetter"+i).hide();
-            $("#hideRandDApprovalLetter"+i).hide();
-            document.getElementById("randDApprovalLetter"+i).required = false;
-        }
-    }
-    function showRandDApprovalLetterFunction(){
-        $("#showRandDApprovalLetter"+countRandDApprovalLetter).show();
-        document.getElementById("randDApprovalLetter"+countRandDApprovalLetter).required = true;
-        $("#hideRandDApprovalLetter"+countRandDApprovalLetter).show();
-        if(countRandDApprovalLetter >5){
-            countRandDApprovalLetter = 5
-        }
-        countRandDApprovalLetter++;
-    }
-    function hideRandDApprovalLetterFunction(){
-        countRandDApprovalLetter--;
-        $("#showRandDApprovalLetter"+countRandDApprovalLetter).hide();
-        document.getElementById("randDApprovalLetter"+countRandDApprovalLetter).required = false;
-        $("#hideRandDApprovalLetter"+countRandDApprovalLetter).hide();
-        if(countRandDApprovalLetter < 2){
-            countRandDApprovalLetter = 2
-        }
-    }
     var countMTAOrCTA = 2;
     setupMTAOrCTA();
     function setupMTAOrCTA(){
@@ -432,12 +336,6 @@
     }
     function consentForUseInResearchFormCompleteFunction(){
         document.getElementById("consentForUseInResearchForm1").required = true;
-    }
-    function randDApprovalLetterPending(){
-        document.getElementById("randDApprovalLetter1").required = false;
-    }
-    function randDApprovalLetterCompleteFunction(){
-        document.getElementById("randDApprovalLetter1").required = true;
     }
     function mTAOrCTAPending(){
         document.getElementById("mTAOrCTA1").required = false;

@@ -88,26 +88,6 @@ class ApplicationFormController {
             }
         }
         for (number in 1..5 ) {
-            def letter = request.getFile('randDApprovalLetter' + number )
-            if(letter?.originalFilename){
-                if (letter?.empty) {
-                    return
-                }
-                def randDApprovalLetter = new RandDApprovalLetter()
-                randDApprovalLetter.letter = grailsApplication.config.uploadFolder + 'RandD_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
-                        letter.originalFilename
-                def destinationFile = new File(randDApprovalLetter.letter)
-                try {
-                    letter.transferTo(destinationFile)
-                    randDApproval.addToRandDApprovalLetter(randDApprovalLetter).save failOnError: true
-
-                }
-                catch (Exception ex) {
-                    log.error(ex)
-                }
-            }
-        }
-        for (number in 1..5 ) {
             def copy = request.getFile('mTAOrCTA' + number )
             if(copy?.originalFilename){
                 if (copy?.empty) {
@@ -213,37 +193,32 @@ class ApplicationFormController {
             if(applicationForm?.stepOneComplete){
 
                 applicationForm?.leadApplicant?.jobTitle = params.leadApplicant.jobTitle
-                applicationForm?.leadApplicant?.familyName = params.leadApplicant.familyName
-                applicationForm?.leadApplicant?.firstName = params.leadApplicant.firstName
+                applicationForm?.leadApplicant?.name = params.leadApplicant.name
                 applicationForm?.leadApplicant?.workAddress = params.leadApplicant.workAddress
                 applicationForm?.leadApplicant?.telephoneNumber = params.leadApplicant.telephoneNumber
                 applicationForm?.leadApplicant?.emailAddress = params.leadApplicant.emailAddress
 
                 applicationForm?.contactPerson?.jobTitle = params.contactPerson.jobTitle
-                applicationForm?.contactPerson?.familyName = params.contactPerson.familyName
-                applicationForm?.contactPerson?.firstName = params.contactPerson.firstName
+                applicationForm?.contactPerson?.name = params.contactPerson.name
                 applicationForm?.contactPerson?.workAddress = params.contactPerson.workAddress
                 applicationForm?.contactPerson?.telephoneNumber = params.contactPerson.telephoneNumber
                 applicationForm?.contactPerson?.emailAddress = params.contactPerson.emailAddress
 
                 applicationForm?.sampleRequestContact?.jobTitle = params.sampleRequestContact.jobTitle
-                applicationForm?.sampleRequestContact?.familyName = params.sampleRequestContact.familyName
-                applicationForm?.sampleRequestContact?.firstName = params.sampleRequestContact.firstName
+                applicationForm?.sampleRequestContact?.name = params.sampleRequestContact.name
                 applicationForm?.sampleRequestContact?.workAddress = params.sampleRequestContact.workAddress
                 applicationForm?.sampleRequestContact?.telephoneNumber = params.sampleRequestContact.telephoneNumber
                 applicationForm?.sampleRequestContact?.emailAddress = params.sampleRequestContact.emailAddress
 
                 if(params.shippingDetailsSame == 'yes'){
                     applicationForm?.shippingDetails?.jobTitle = params.contactPerson.jobTitle
-                    applicationForm?.shippingDetails?.familyName = params.contactPerson.familyName
-                    applicationForm?.shippingDetails?.firstName = params.contactPerson.firstName
+                    applicationForm?.shippingDetails?.name = params.contactPerson.name
                     applicationForm?.shippingDetails?.workAddress = params.contactPerson.workAddress
                     applicationForm?.shippingDetails?.telephoneNumber = params.contactPerson.telephoneNumber
                     applicationForm?.shippingDetails?.emailAddress = params.contactPerson.emailAddress
                 }else {
                     applicationForm?.shippingDetails?.jobTitle = params.shippingDetails.jobTitle
-                    applicationForm?.shippingDetails?.familyName = params.shippingDetails.familyName
-                    applicationForm?.shippingDetails?.firstName = params.shippingDetails.firstName
+                    applicationForm?.shippingDetails?.name = params.shippingDetails.name
                     applicationForm?.shippingDetails?.workAddress = params.shippingDetails.workAddress
                     applicationForm?.shippingDetails?.telephoneNumber = params.shippingDetails.telephoneNumber
                     applicationForm?.shippingDetails?.emailAddress = params.shippingDetails.emailAddress
@@ -260,37 +235,32 @@ class ApplicationFormController {
                 def sampleRequestContact = new Person()
 
                 leadApplicant?.jobTitle = params.leadApplicant.jobTitle
-                leadApplicant?.familyName = params.leadApplicant.familyName
-                leadApplicant?.firstName = params.leadApplicant.firstName
+                leadApplicant?.name = params.leadApplicant.name
                 leadApplicant?.workAddress = params.leadApplicant.workAddress
                 leadApplicant?.telephoneNumber = params.leadApplicant.telephoneNumber
                 leadApplicant?.emailAddress = params.leadApplicant.emailAddress
 
                 contactPerson?.jobTitle = params.contactPerson.jobTitle
-                contactPerson?.familyName = params.contactPerson.familyName
-                contactPerson?.firstName = params.contactPerson.firstName
+                contactPerson?.name = params.contactPerson.name
                 contactPerson?.workAddress = params.contactPerson.workAddress
                 contactPerson?.telephoneNumber = params.contactPerson.telephoneNumber
                 contactPerson?.emailAddress = params.contactPerson.emailAddress
 
                 sampleRequestContact?.jobTitle = params.sampleRequestContact.jobTitle
-                sampleRequestContact?.familyName = params.sampleRequestContact.familyName
-                sampleRequestContact?.firstName = params.sampleRequestContact.firstName
+                sampleRequestContact?.name = params.sampleRequestContact.name
                 sampleRequestContact?.workAddress = params.sampleRequestContact.workAddress
                 sampleRequestContact?.telephoneNumber = params.sampleRequestContact.telephoneNumber
                 sampleRequestContact?.emailAddress = params.sampleRequestContact.emailAddress
 
                 if(params.shippingDetailsSame == 'yes'){
                     shippingDetails?.jobTitle = params.contactPerson.jobTitle
-                    shippingDetails?.familyName = params.contactPerson.familyName
-                    shippingDetails?.firstName = params.contactPerson.firstName
+                    shippingDetails?.name = params.contactPerson.name
                     shippingDetails?.workAddress = params.contactPerson.workAddress
                     shippingDetails?.telephoneNumber = params.contactPerson.telephoneNumber
                     shippingDetails?.emailAddress = params.contactPerson.emailAddress
                 }else {
                     shippingDetails?.jobTitle = params.shippingDetails.jobTitle
-                    shippingDetails?.familyName = params.shippingDetails.familyName
-                    shippingDetails?.firstName = params.shippingDetails.firstName
+                    shippingDetails?.name = params.shippingDetails.name
                     shippingDetails?.workAddress = params.shippingDetails.workAddress
                     shippingDetails?.telephoneNumber = params.shippingDetails.telephoneNumber
                     shippingDetails?.emailAddress = params.shippingDetails.emailAddress
@@ -316,8 +286,7 @@ class ApplicationFormController {
                 applicationForm?.researchFunder = params.researchFunder
                 applicationForm?.companyName = params.companyName
                 applicationForm?.contactPersonQuotationFunding?.jobTitle = params.contactPersonQuotationFunding.jobTitle
-                applicationForm?.contactPersonQuotationFunding?.familyName = params.contactPersonQuotationFunding.familyName
-                applicationForm?.contactPersonQuotationFunding?.firstName = params.contactPersonQuotationFunding.firstName
+                applicationForm?.contactPersonQuotationFunding?.name = params.contactPersonQuotationFunding.name
                 applicationForm?.contactPersonQuotationFunding?.workAddress = params.contactPersonQuotationFunding.workAddress
                 applicationForm?.contactPersonQuotationFunding?.telephoneNumber = params.contactPersonQuotationFunding.telephoneNumber
                 applicationForm?.contactPersonQuotationFunding?.emailAddress = params.contactPersonQuotationFunding.emailAddress
@@ -327,8 +296,7 @@ class ApplicationFormController {
                 applicationForm.companyName = params.companyName
                 def contactPersonQuotationFunding = new Person()
                 contactPersonQuotationFunding?.jobTitle = params.contactPersonQuotationFunding.jobTitle
-                contactPersonQuotationFunding?.familyName = params.contactPersonQuotationFunding.familyName
-                contactPersonQuotationFunding?.firstName = params.contactPersonQuotationFunding.firstName
+                contactPersonQuotationFunding?.name = params.contactPersonQuotationFunding.name
                 contactPersonQuotationFunding?.workAddress = params.contactPersonQuotationFunding.workAddress
                 contactPersonQuotationFunding?.telephoneNumber = params.contactPersonQuotationFunding.telephoneNumber
                 contactPersonQuotationFunding?.emailAddress = params.contactPersonQuotationFunding.emailAddress
@@ -343,11 +311,8 @@ class ApplicationFormController {
                 applicationForm?.ethicalApproval?.referenceNo = params.ethicalApproval.referenceNo
                 applicationForm?.ethicalApproval?.title = params.ethicalApproval.title
                 applicationForm?.ethicalApproval?.startDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.startDate)
-                if(params.ethicalApproval.expiryDate){
-                    applicationForm?.ethicalApproval?.expiryDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.expiryDate)
-                }
-                applicationForm?.randDApproval?.bodyName = params.randDApproval.bodyName
-                applicationForm?.randDApproval?.referenceNo = params.randDApproval.referenceNo
+                applicationForm?.randDApproval?.organisation = params.randDApproval.organisation
+                applicationForm?.randDApproval?.pid = params.randDApproval.pid
                 applicationForm?.randDApproval?.otherInformation = params.randDApproval.otherInformation
                 applicationForm?.registrationOnPortfolioName = params.registrationOnPortfolioName
                 applicationForm?.sponsorOrganisation = params.sponsorOrganisation
@@ -369,19 +334,9 @@ class ApplicationFormController {
                     ethicalApproval?.ethicalApprovalLetterPending = true
                 }
                 ethicalApproval?.startDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.startDate)
-                if(params.ethicalApproval.expiryDate){
-                    ethicalApproval?.expiryDate = Date.parse("yyyy-MM-dd", params.ethicalApproval.expiryDate)
-                }
-                randDApproval?.bodyName = params.randDApproval.bodyName
-                randDApproval?.referenceNo = params.randDApproval.referenceNo
+                randDApproval?.organisation = params.randDApproval.organisation
+                randDApproval?.pid = params.randDApproval.pid
                 randDApproval?.otherInformation = params.randDApproval.otherInformation
-                if(params.randDApprovalLetterComplete == 'Yes'){
-                    randDApproval?.randDApprovalLetterComplete = true
-                    randDApproval.randDApprovalLetterPending = false
-                }else {
-                    randDApproval?.randDApprovalLetterComplete = false
-                    randDApproval.randDApprovalLetterPending = true
-                }
                 applicationForm?.registrationOnPortfolioName = params.registrationOnPortfolioName
                 applicationForm?.sponsorOrganisation = params.sponsorOrganisation
                 applicationForm?.mTAArranged = params.mTAArranged
@@ -433,26 +388,6 @@ class ApplicationFormController {
                     }
                 }
                 randDApproval.save failOnError: true
-                for (number in 1..5 ) {
-                    def letter = request.getFile('randDApprovalLetter' + number )
-                    if(letter?.originalFilename){
-                        if (letter?.empty) {
-                            return
-                        }
-                        def randDApprovalLetter = new RandDApprovalLetter()
-                        randDApprovalLetter.letter = grailsApplication.config.uploadFolder + 'RandD_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
-                                letter.originalFilename
-                        def destinationFile = new File(randDApprovalLetter.letter)
-                        try {
-                            letter.transferTo(destinationFile)
-                            randDApproval.addToRandDApprovalLetter(randDApprovalLetter).save failOnError: true
-
-                        }
-                        catch (Exception ex) {
-                            log.error(ex)
-                        }
-                    }
-                }
                 if(params.mTAOrCTAComplete == 'Yes'){
                     mTAOrCTA?.mTAOrCTAComplete = true
                     mTAOrCTA.mTAOrCTAPending = false
@@ -491,8 +426,10 @@ class ApplicationFormController {
         }else if (stepNumber == 4){
             if(applicationForm.stepFourComplete){
                 applicationForm?.trial?.trialTitle = params.trial.trialTitle
-                applicationForm?.trial?.recruitedNumber = params.trial.recruitedNumber
-                applicationForm?.trial?.expectedDuration = params.trial.expectedDuration
+                applicationForm?.trial?.recruitmentAgreedTarget = params.trial.recruitmentAgreedTarget
+                applicationForm?.trial?.sponsor = params.trial.sponsor
+                applicationForm?.trial?.protocolSynopsis = params.trial.protocolSynopsis
+                applicationForm?.trial?.siteEndDate = Date.parse("yyyy-MM-dd", params.trial.siteEndDate)
                 applicationForm?.trial?.laySummary = params.trial.laySummary
                 applicationForm?.trial?.nHSPathologist = params.trial.nHSPathologist
                 applicationForm?.trial?.pathologistName = params.trial.pathologistName
@@ -500,9 +437,11 @@ class ApplicationFormController {
             }else {
                 def trial = new Trial()
                 trial?.trialTitle = params.trial.trialTitle
-                trial?.expectedDuration = params.trial.expectedDuration
+                trial?.siteEndDate = Date.parse("yyyy-MM-dd", params.trial.siteEndDate)
                 trial?.laySummary = params.trial.laySummary
-                trial?.recruitedNumber = params.trial.recruitedNumber
+                trial?.recruitmentAgreedTarget = params.trial.recruitmentAgreedTarget
+                trial?.sponsor = params.trial.sponsor
+                trial?.protocolSynopsis = params.trial.protocolSynopsis
                 trial?.nHSPathologist = params.trial.nHSPathologist
                 trial?.pathologistName = params.trial.pathologistName
                 applicationForm.trial = trial
@@ -515,6 +454,7 @@ class ApplicationFormController {
             applicationForm.dataRequirements = params.dataRequirements
             applicationForm.dataRequirementsOther = params.dataRequirementsOther
             applicationForm.howMaterialUsed = params.howMaterialUsed
+            applicationForm.terms = params.terms
 
             def clinicalTrialForm = request.getFile('clinicalTrialForm')
             if (clinicalTrialForm?.originalFilename){
@@ -532,8 +472,10 @@ class ApplicationFormController {
                 }
             }
 
+            println(params.sample.timePoint1)
             def sample1 = new Sample()
             sample1?.timePoint = params.sample.timePoint1
+            sample1?.sampleFor = params.sample.sampleFor1
             sample1?.sampleType = params.sample.sampleType1
             sample1?.slideNumber = params.sample.slideNumber1
             sample1?.slideThickness = params.sample.slideThickness1
@@ -546,6 +488,7 @@ class ApplicationFormController {
             if(params.sample.sampleType2){
                 def sample2 = new Sample()
                 sample2?.timePoint = params.sample.timePoint2
+                sample2?.sampleFor = params.sample.sampleFor2
                 sample2?.sampleType = params.sample.sampleType2
                 sample2?.slideNumber = params.sample.slideNumber2
                 sample2?.slideThickness = params.sample.slideThickness2
@@ -557,7 +500,6 @@ class ApplicationFormController {
             }
             if(applicationForm.ethicalApproval.ethicalApprovalLetterPending
                || applicationForm.consentForUseInResearch.consentForUseInResearchFormPending
-               || applicationForm.randDApproval.randDApprovalLetterPending
                || applicationForm.mTAOrCTA.mTAOrCTAPending){
                 applicationForm?.applicationType = ApplicationType.findByApplicationTypeName('Submitted Pending Attachments')
             }else {
@@ -566,6 +508,87 @@ class ApplicationFormController {
             applicationForm.save failOnError: true
             redirect(action: "applicationStatus", params:[applicationFormId: applicationForm.id])
         }
+    }
+
+    def download() {
+
+        def id = params.long('id')
+        if (params.docomentType == 'ethicalApprovalLetter'){
+            EthicalApprovalLetter ethicalApprovalLetterInstance = EthicalApprovalLetter.get(id)
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${ethicalApprovalLetterInstance.letter}\"")
+            def file = new File(ethicalApprovalLetterInstance.letter)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+        }else if (params.docomentType == 'consentForUseInResearchForm'){
+            ConsentForUseInResearchForms consentForUseInResearchFormsInstance = ConsentForUseInResearchForms.get(id)
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${consentForUseInResearchFormsInstance.form}\"")
+            def file = new File(consentForUseInResearchFormsInstance.form)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+        }else if (params.docomentType == 'copyOfMTAOrCTA'){
+            CopyOfMTAOrCTA copyOfMTAOrCTAInstance = CopyOfMTAOrCTA.get(id)
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${copyOfMTAOrCTAInstance.copy}\"")
+            def file = new File(copyOfMTAOrCTAInstance.copy)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+        }else if (params.docomentType == 'clinicalTrialForm'){
+            ApplicationForm applicationFormInstance = ApplicationForm.get(id)
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${applicationFormInstance.clinicalTrialForm}\"")
+            def file = new File(applicationFormInstance.clinicalTrialForm)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+        }
+
+//        EthicalApprovalLetter ethicalApprovalLetterInstance = EthicalApprovalLetter.get(id)
+//        response.setContentType("APPLICATION/OCTET-STREAM")
+//        response.setHeader("Content-Disposition", "Attachment;Filename=\"${ethicalApprovalLetterInstance.letter}\"")
+//        def file = new File(ethicalApprovalLetterInstance.letter)
+//        def fileInputStream = new FileInputStream(file)
+//        def outputStream = response.getOutputStream()
+//        byte[] buffer = new byte[4096];
+//        int len;
+//        while ((len = fileInputStream.read(buffer)) > 0) {
+//            outputStream.write(buffer, 0, len);
+//        }
+//        outputStream.flush()
+//        outputStream.close()
+//        fileInputStream.close()
     }
 
     @Transactional

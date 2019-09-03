@@ -59,19 +59,10 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="leadApplicant.firstName">First Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='leadApplicant.firstName' id='leadApplicant.firstName' value="${applicationForm?.leadApplicant?.firstName}" placeholder='Enter First Name' required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="leadApplicant.familyName">Family Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='leadApplicant.familyName' id='leadApplicant.familyName' value="${applicationForm?.leadApplicant?.familyName}" placeholder='Enter Family Name' required>
+                                            <label for="leadApplicant.name">Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='leadApplicant.name' id='leadApplicant.name' value="${applicationForm?.leadApplicant?.name}" placeholder='Enter Name' required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -79,7 +70,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="leadApplicant.firstName">Work Address <span style="color: red">*</span></label><br>
+                                            <label for="leadApplicant.workAddress">Work Address <span style="color: red">*</span></label><br>
                                             <textarea name='leadApplicant.workAddress' id='leadApplicant.workAddress' placeholder='Enter Work Address' required>${applicationForm?.leadApplicant?.workAddress}</textarea>
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -118,19 +109,10 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="contactPerson.firstName">First Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='contactPerson.firstName' id='contactPerson.firstName' value="${applicationForm?.contactPerson?.firstName}" placeholder='Enter First Name' required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="contactPerson.familyName">Family Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='contactPerson.familyName' id='contactPerson.familyName' value="${applicationForm?.contactPerson?.familyName}" placeholder='Enter Family Name' required>
+                                            <label for="contactPerson.name">Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='contactPerson.name' id='contactPerson.name' value="${applicationForm?.contactPerson?.name}" placeholder='Enter Name' required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -180,19 +162,10 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="sampleRequestContact.firstName">First Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.firstName' id='sampleRequestContact.firstName' value="${applicationForm?.sampleRequestContact?.firstName}" placeholder='Enter First Name' required="">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="sampleRequestContact.familyName">Family Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.familyName' id='sampleRequestContact.familyName' value="${applicationForm?.sampleRequestContact?.familyName}" placeholder='Enter Family Name' required="">
+                                            <label for="sampleRequestContact.name">Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='sampleRequestContact.name' id='sampleRequestContact.name' value="${applicationForm?.sampleRequestContact?.name}" placeholder='Enter Name' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -247,19 +220,10 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="shippingDetails.firstName">First Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='shippingDetails.firstName' id='shippingDetails.firstName' value="${applicationForm?.shippingDetails?.firstName}" placeholder='Enter First Name'>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="shippingDetails.familyName">Family Name <span style="color: red">*</span></label><br>
-                                            <input type='text' name='shippingDetails.familyName' id='shippingDetails.familyName' value="${applicationForm?.shippingDetails?.familyName}" placeholder='Enter Family Name'>
+                                            <label for="shippingDetails.name">Name <span style="color: red">*</span></label><br>
+                                            <input type='text' name='shippingDetails.name' id='shippingDetails.name' value="${applicationForm?.shippingDetails?.name}" placeholder='Enter Name'>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -339,19 +303,10 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="contactPersonQuotationFunding.familyName">Family Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPersonQuotationFunding.familyName' id='contactPersonQuotationFunding.familyName' value="${applicationForm?.contactPersonQuotationFunding?.familyName}" placeholder='Enter Family Name' required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="contactPersonQuotationFunding.firstName">First Name <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPersonQuotationFunding.firstName' id='contactPersonQuotationFunding.firstName' value="${applicationForm?.contactPersonQuotationFunding?.firstName}" placeholder='Enter First Name' required>
+                                <label for="contactPersonQuotationFunding.name">Name <span style="color: red">*</span></label><br>
+                                <input type='text' name='contactPersonQuotationFunding.name' id='contactPersonQuotationFunding.name' value="${applicationForm?.contactPersonQuotationFunding?.name}" placeholder='Enter Name' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -359,7 +314,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="contactPersonQuotationFunding.firstName">Work Address <span style="color: red">*</span></label><br>
+                                <label for="contactPersonQuotationFunding.workAddress">Work Address <span style="color: red">*</span></label><br>
                                 <textarea name='contactPersonQuotationFunding.workAddress' id='contactPersonQuotationFunding.workAddress' placeholder='Enter Work Address' required>${applicationForm?.contactPersonQuotationFunding?.workAddress}</textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -488,12 +443,6 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="ethicalApproval.expiryDate">Expiry Date</label><br>
-                                <input type='date' name='ethicalApproval.expiryDate' id='ethicalApproval.expiryDate' value="${applicationForm?.ethicalApproval?.expiryDate?.toString()?.substring(0,10)}" placeholder='Enter Expiry Date'>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -579,100 +528,24 @@
                 <div class="card-header"><b>R&D approval details</b></div>
                 <div class="card-block p-0" style="margin: auto;width: 50%">
                     <div class="row">
-                        <g:if test="${applicationForm?.randDApproval}">
-                            <div class="col-lg-12">
-                                <label for="consentForUseInResearchForm">Copy of the approval letter  <span style="color: red">*</span></label><br>
-                                %{--<label>${applicationForm?.randDApproval?.letter?.toString()?.split('_')?.last()}</label>--}%
-                                %{--<g:link action="download" id="${applicationForm?.ethicalApproval?.id}"> <a class="btn btn-danger btn-xs" href="#" onclick="showDeleteModal()"><i class="glyphicon glyphicon-trash"></i> Delete Letter & Reload</a></g:link>--}%
-                            </div>
-                        </g:if>
-                        <g:else>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="randDApprovalLetter1">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='randDApprovalLetter1' id='randDApprovalLetter1' required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    %{--<label for="randDApprovalLetterPending">Pending?</label>--}%
-                                    %{--<input type="checkbox" name="randDApprovalLetterPending" id="randDApprovalLetterPending" onclick="randDApprovalLetterFunction()">--}%
-                                    %{--<div class="help-block with-errors"></div>--}%
-                                    <label for="randDApprovalLetterComplete">Have you uploaded all documents?</label><br>
-                                    <input type="radio" name="randDApprovalLetterComplete" value="Yes" onclick="randDApprovalLetterCompleteFunction()" required> Yes
-                                    <input type="radio" name="randDApprovalLetterComplete" value="Pending" onclick="randDApprovalLetterPending()"> Pending
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-8" id="showRandDApprovalLetter2">
-                                <div class="form-group">
-                                    <label for="randDApprovalLetter2">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='randDApprovalLetter2' id='randDApprovalLetter2' required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-8" id="showRandDApprovalLetter3">
-                                <div class="form-group">
-                                    <label for="randDApprovalLetter3">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='randDApprovalLetter3' id='randDApprovalLetter3' required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-8" id="showRandDApprovalLetter4">
-                                <div class="form-group">
-                                    <label for="randDApprovalLetter4">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='randDApprovalLetter4' id='randDApprovalLetter4' required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-8" id="showRandDApprovalLetter5">
-                                <div class="form-group">
-                                    <label for="randDApprovalLetter5">Please attach a copy of the approval letter <span style="color: red">*</span></label><br>
-                                    <input type='file' name='randDApprovalLetter5' id='randDApprovalLetter5' required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4" id="hideRandDApprovalLetter2">
-                                <p>
-                                    <label>Remove documents </label><br>
-                                    <button class="btn btn-light" type="button" onclick="hideRandDApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Remove</button>
-                                </p>
-                            </div>
-                            <div class="col-lg-8">
-                                <p>
-                                    <label>Attach more documents </label><br>
-                                    <button class="btn btn-light" type="button" onclick="showRandDApprovalLetterFunction()"><i class="fas fa-plus-circle"></i> Add</button>
-                                </p>
-                            </div>
-                            %{--<div class="col-lg-4">--}%
-                                %{--<div class="form-group">--}%
-                                    %{--<label for="randDApprovalLetterComplete">Complete?</label>--}%
-                                    %{--<input type="checkbox" name="randDApprovalLetterComplete" id="randDApprovalLetterComplete">--}%
-                                    %{--<div class="help-block with-errors"></div>--}%
-                                %{--</div>--}%
-                            %{--</div>--}%
-                        </g:else>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="randDApproval.bodyName">Approval Body <span style="color: red">*</span></label>
-                                <input type='text' name='randDApproval.bodyName' id='randDApproval.bodyName' value="${applicationForm?.randDApproval?.bodyName}" placeholder='Enter Approval Body' required>
+                                <label for="randDApproval.organisation">Organisation<span style="color: red">*</span></label>
+                                <g:select name="randDApproval.organisation" id="randDApprovalOrganisation" from="['OUH', 'Other']" value="${applicationForm?.randDApproval?.organisation}" onChange="showOtherLabel()" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="randDApproval.referenceNo">Reference No <span style="color: red">*</span></label>
-                                <input type='text' name='randDApproval.referenceNo' id='randDApproval.referenceNo' value="${applicationForm?.randDApproval?.referenceNo}" placeholder='Enter Reference No' required>
+                                <label for="randDApproval.pid">PID <span style="color: red">*</span></label><br>
+                                <input type='text' name='randDApproval.pid' id='randDApproval.pid' value="${applicationForm?.randDApproval?.pid}" placeholder='Enter PID' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <p>
-                                <label for="randDApproval.otherInformation">Other Information</label>
-                                <textarea rows="4" cols="50" type='text' name='randDApproval.otherInformation' id='randDApproval.otherInformation' placeholder='Enter Other Information'>${applicationForm?.randDApproval?.otherInformation}</textarea>
+                                <label id="otherInformation">Other Information</label>
+                                <textarea rows="4" cols="50" type='text' name='randDApproval.otherInformation' id='randDApprovalOtherInformation' placeholder='Enter Other Information'>${applicationForm?.randDApproval?.otherInformation}</textarea>
                             </p>
                         </div>
                     </div>
@@ -818,24 +691,31 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="trial.trialTitle">Trial title <span style="color: red">*</span></label>
+                                <label for="trial.trialTitle">Trial title <span style="color: red">*</span></label><br>
                                 <input type='text' name='trial.trialTitle' id='trial.trialTitle' value="${applicationForm?.trial?.trialTitle}" placeholder='Enter Trial title' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="trial.expectedDuration">Expected duration <span style="color: red">*</span></label>
-                                <input type='text' name='trial.expectedDuration' id='trial.expectedDuration' value="${applicationForm?.trial?.expectedDuration}" placeholder='Enter Expected duration' required>
+                                <label for="trial.siteEndDate">Site end date <span style="color: red">*</span></label><br>
+                                <input type='date' name='trial.siteEndDate' id='trial.siteEndDate' value="${applicationForm?.trial?.siteEndDate?.toString()?.substring(0,10)}" placeholder='Enter site end date' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-10">
+                        <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="trial.recruitedNumber">Estimated number of recruited in Oxford <span style="color: red">*</span></label>
-                                <input type='text' name='trial.recruitedNumber' id='trial.recruitedNumber' value="${applicationForm?.trial?.recruitedNumber}" placeholder='Enter number' required>
+                                <label for="trial.recruitmentAgreedTarget">Agreed recruitment target <span style="color: red">*</span></label><br>
+                                <input type='text' name='trial.recruitmentAgreedTarget' id='trial.recruitmentAgreedTarget' value="${applicationForm?.trial?.recruitmentAgreedTarget}" placeholder='Enter recruitment agreed target' required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="trial.sponsor">Sponsor <span style="color: red">*</span></label><br>
+                                <input type='text' name='trial.sponsor' id='trial.sponsor' value="${applicationForm?.trial?.sponsor}" placeholder='Enter sponsor' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -851,6 +731,20 @@
                         <div class="col-lg-6">
                             <p>
                                 <textarea rows="4" cols="50" type='text' name='trial.laySummary' id='trial.laySummary' placeholder='' required="">${applicationForm?.trial?.laySummary}</textarea>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header"><b>Protocol synopsis</b><span style="color: red">*</span></div>
+                <div class="card-block p-0" style="margin: auto;width: 50%">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>
+                                <textarea rows="4" cols="50" type='text' name='trial.protocolSynopsis' id='trial.protocolSynopsis' placeholder='' required="">${applicationForm?.trial?.protocolSynopsis}</textarea>
                             </p>
                         </div>
                     </div>
@@ -897,7 +791,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="timePoint1">Timepoint <span style="color: red">*</span></label><br>
-                                <g:select name="timePoint1" id="timePoint1"  from="['Screening', 'Disease progression', 'End of study']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <g:select name="sample.timePoint1" id="timePoint1"  from="['Screening', 'Disease progression', 'End of study']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="sampleSampleFor2">What is this sample for? <span style="color: red">*</span></label><br>
+                                <g:select name="sample.sampleFor1" id="sampleSampleFor1"  from="['Eligibility/randomisation', 'Primary or secondary outcomes', 'Exploratory outcome only']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -959,7 +860,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="timePoint2">Timepoint <span style="color: red">*</span></label><br>
-                                <g:select name="timePoint2" id="timePoint2"  from="['Screening', 'Disease progression', 'End of study']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <g:select name="sample.timePoint2" id="timePoint2"  from="['Screening', 'Disease progression', 'End of study']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="sampleSampleFor2">What is this sample for? <span style="color: red">*</span></label><br>
+                                <g:select name="sample.sampleFor2" id="sampleSampleFor2"  from="['Eligibility/randomisation', 'Primary or secondary outcomes', 'Exploratory outcome only']" noSelection="['':'']" style="width:180px;height:30px;" required=""/>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -1089,7 +997,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label for="terms">I agree with the <a href="${assetPath(src: 't&cv3.pdf')}" target="_blank">T&C </a><span style="color: red">*</span></label>
-                                <input type="checkbox" id="terms" data-error="Please accept the Terms and Conditions" required>
+                                <input type="checkbox" name="terms" id="terms" data-error="Please accept the Terms and Conditions" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -1186,8 +1094,7 @@
     function shippingShow(){
         $("#shipping").show();
         document.getElementById("shippingDetails.jobTitle").required = true;
-        document.getElementById("shippingDetails.familyName").required = true;
-        document.getElementById("shippingDetails.firstName").required = true;
+        document.getElementById("shippingDetails.name").required = true;
         document.getElementById("shippingDetails.workAddress").required = true;
         document.getElementById("shippingDetails.telephoneNumber").required = true;
         document.getElementById("shippingDetails.emailAddress").required = true;
@@ -1196,8 +1103,7 @@
     function shippingHide(){
         $("#shipping").hide();
         document.getElementById("shippingDetails.jobTitle").required = false;
-        document.getElementById("shippingDetails.familyName").required = false;
-        document.getElementById("shippingDetails.firstName").required = false;
+        document.getElementById("shippingDetails.name").required = false;
         document.getElementById("shippingDetails.workAddress").required = false;
         document.getElementById("shippingDetails.telephoneNumber").required = false;
         document.getElementById("shippingDetails.emailAddress").required = false;
@@ -1255,7 +1161,7 @@
             document.getElementById("sampleStained2").required = true;
             $("#archivalNote2").hide();
         }else if($("#sampleSampleType2").val() == 'Archival block'){
-            $("#unstainedSections1").hide();
+            $("#unstainedSections2").hide();
             $("#archivalNote2").show();
             document.getElementById("sampleSlideNumber2").required = false;
             document.getElementById("sample.slideThickness2").required = false;
@@ -1278,6 +1184,7 @@
         $("#sample2").hide();
         document.getElementById("timePoint2").required = false;
         document.getElementById("sampleSampleType2").required = false;
+        document.getElementById("sampleSampleFor2").required = false;
         document.getElementById("sampleSlideNumber2").required = false;
         document.getElementById("sample.slideThickness2").required = false;
         document.getElementById("sample.slideType2").required = false;
@@ -1334,6 +1241,18 @@
             $("#mTAOrCTA").show();
             document.getElementById("mTAOrCTA1").required = true;
             document.getElementById("mTAOrCTAComplete").required = true;
+        }
+    }
+    showOtherLabel();
+    function showOtherLabel(){
+        if ($("#randDApprovalOrganisation").val()  == 'Other'){
+            $("#otherInformation").hide();
+            $("#otherInformationMan").show();
+            document.getElementById("randDApprovalOtherInformation").required = true;
+        }else{
+            $("#otherInformationMan").hide();
+            $("#otherInformation").show();
+            document.getElementById("randDApprovalOtherInformation").required = false;
         }
     }
     var countEthicalApprovalLetter = 2;
@@ -1393,34 +1312,6 @@
             countConsentForUseInResearchForm = 2
         }
     }
-    var countRandDApprovalLetter = 2;
-    setupRandDApprovalLetter();
-    function setupRandDApprovalLetter(){
-        var i;
-        for (i = countRandDApprovalLetter; i < 6; i ++) {
-            $("#showRandDApprovalLetter"+i).hide();
-            $("#hideRandDApprovalLetter"+i).hide();
-            document.getElementById("randDApprovalLetter"+i).required = false;
-        }
-    }
-    function showRandDApprovalLetterFunction(){
-        $("#showRandDApprovalLetter"+countRandDApprovalLetter).show();
-        document.getElementById("randDApprovalLetter"+countRandDApprovalLetter).required = true;
-        $("#hideRandDApprovalLetter"+countRandDApprovalLetter).show();
-        if(countRandDApprovalLetter >5){
-            countRandDApprovalLetter = 5
-        }
-        countRandDApprovalLetter++;
-    }
-    function hideRandDApprovalLetterFunction(){
-        countRandDApprovalLetter--;
-        $("#showRandDApprovalLetter"+countRandDApprovalLetter).hide();
-        document.getElementById("randDApprovalLetter"+countRandDApprovalLetter).required = false;
-        $("#hideRandDApprovalLetter"+countRandDApprovalLetter).hide();
-        if(countRandDApprovalLetter < 2){
-            countRandDApprovalLetter = 2
-        }
-    }
     var countMTAOrCTA = 2;
     setupMTAOrCTA();
     function setupMTAOrCTA(){
@@ -1460,12 +1351,6 @@
     }
     function consentForUseInResearchFormCompleteFunction(){
         document.getElementById("consentForUseInResearchForm1").required = true;
-    }
-    function randDApprovalLetterPending(){
-        document.getElementById("randDApprovalLetter1").required = false;
-    }
-    function randDApprovalLetterCompleteFunction(){
-        document.getElementById("randDApprovalLetter1").required = true;
     }
     function mTAOrCTAPending(){
         document.getElementById("mTAOrCTA1").required = false;

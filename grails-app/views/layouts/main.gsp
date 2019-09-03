@@ -40,32 +40,11 @@
                     %{--</li>--}%
                 </sec:ifLoggedIn>
                 <sec:ifAnyGranted roles="ROLE_ADMIN">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-cog"></i>
-                            Administration
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><b>User Access Management</b></a>
-                            <a class="dropdown-item" href="${createLink(uri: '/role')}">
-                                <i class="fas fa-search"></i>
-                                Search Role
-                            </a>
-                            <a class="dropdown-item" href="${createLink(uri: '/role/create')}">
-                                <i class="fas fa-plus-circle"></i>
-                                Add Role
-                            </a>
-                            <a class="dropdown-item" href="${createLink(uri: '/user/create')}">
-                                <i class="fas fa-plus-circle"></i>
-                                Add User
-                            </a>
-                            <a class="dropdown-item" href="${createLink(uri: '/user')}">
-                                <i class="fas fa-search"></i>
-                                Search User
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><b>Dropdown List Management</b></a>
-                        </div>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="applicationType" action="index"><i class="fas fa-list-alt"></i> Application status</g:link>
+                    </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" url="${createLink(uri: '/user')}"><i class="fas fa-list-alt"></i> User List</g:link>
                     </li>
                 </sec:ifAnyGranted>
                 <li class="nav-item">
