@@ -4,17 +4,19 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     </head>
     <body>
     <a href="#show-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
     <div class="nav" role="navigation">
         <ul>
             <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            %{--<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>--}%
             <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
         </ul>
     </div>
     <div style="margin-left: 30px;margin-right: 30px;">
+    <div><center>Application: <b>${applicationForm?.id}</b></center></div>
+    <div><center>Status: <b>${applicationForm?.applicationType}</b></center></div>
     <div id="step-1">
     <g:form action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
     <div id="form-step-0" role="form" data-toggle="validator">
@@ -299,10 +301,11 @@
         <div class="card-header"><b>Ethical approval details</b> </div>
         <div class="card-block p-0" style="margin: auto;width: 50%">
             <div class="row">
+                <br>
                 <g:if test="${applicationForm?.ethicalApproval}">
+                    <label class="col-lg-12" for="ethicalApprovalLetter">Copy of the approval letter</label><br>
                     <g:each in="${applicationForm?.ethicalApproval?.ethicalApprovalLetter}" status="i" var="ethicalApprovalLetter">
                         <div class="col-lg-12">
-                            <label for="ethicalApprovalLetter">Copy of the approval letter</label><br>
                             <g:link style="color:blue" action="download" id="${ethicalApprovalLetter?.id}" params="[docomentType: 'ethicalApprovalLetter']">${ethicalApprovalLetter?.toString()?.split('_')?.last()}</g:link>
                         </div>
                     </g:each>
@@ -346,9 +349,9 @@
             <br>
             <div class="row">
                 <g:if test="${applicationForm?.consentForUseInResearch}">
+                    <label class="col-lg-12" for="consentForUseInResearchForms">Copy of the consent form</label><br>
                     <g:each in="${applicationForm?.consentForUseInResearch?.consentForUseInResearchForms}" status="i" var="consentForUseInResearchForms">
                         <div class="col-lg-12">
-                            <label for="consentForUseInResearchForms">Copy of the consent form</label><br>
                             <g:link style="color:blue" action="download" id="${consentForUseInResearchForms?.id}" params="[docomentType: 'consentForUseInResearchForm']">${consentForUseInResearchForms?.toString()?.split('_')?.last()}</g:link>
                         </div>
                     </g:each>
@@ -442,9 +445,9 @@
             </div>
             <div class="row" id="mTAOrCTA">
                 <g:if test="${applicationForm?.mTAOrCTA}">
+                    <label class="col-lg-12" for="ethicalApprovalLetter">Copy of the MTA or CTA</label><br>
                     <g:each in="${applicationForm?.mTAOrCTA?.copyOfMTAOrCTA}" status="i" var="copyOfMTAOrCTA">
                         <div class="col-lg-12">
-                            <label for="ethicalApprovalLetter">Copy of the MTA or CTA</label><br>
                             <g:link style="color:blue" action="download" id="${copyOfMTAOrCTA?.id}" params="[docomentType: 'copyOfMTAOrCTA']">${copyOfMTAOrCTA?.toString()?.split('_')?.last()}</g:link>
                         </div>
                     </g:each>
@@ -762,12 +765,20 @@
     </div>
     <br>
     <div>
-        <g:form resource="${this.applicationForm}" method="DELETE">
-            <fieldset class="buttons">
-                <g:link class="edit" action="edit" resource="${this.applicationForm}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-            </fieldset>
-        </g:form>
+        <g:if test="${applicationForm.applicationType.applicationTypeName == 'Submitted'}">
+            <g:form action="updateStatus" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
+                <g:hiddenField name="applicationFormId" value="${applicationForm.id}"/>
+                <g:hiddenField name="status" value="OCHRe Committee Meeting"/>
+                <g:submitButton name="create" class="fas fa-users" value="Assign to OCHRe Committee Meeting" />
+            </g:form>
+        </g:if>
+        <g:elseif test="${applicationForm.applicationType.applicationTypeName == 'OCHRe Committee Meeting'}">
+            <g:form action="updateStatus" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
+                <g:hiddenField name="applicationFormId" value="${applicationForm.id}"/>
+                <g:hiddenField name="status" value="Application Approved"/>
+                <g:submitButton name="create" class="fas fa-users" value="Approve Application" />
+            </g:form>
+        </g:elseif>
     </div>
     <br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

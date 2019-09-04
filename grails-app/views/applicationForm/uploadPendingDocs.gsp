@@ -247,7 +247,9 @@
         for (i = countEthicalApprovalLetter; i < 6; i ++) {
             $("#showEthicalApprovalLetter"+i).hide();
             $("#hideEthicalApprovalLetter"+i).hide();
-            document.getElementById("ethicalApprovalLetter"+i).required = false;
+            if (document.getElementById("ethicalApprovalLetter"+i)){
+                document.getElementById("ethicalApprovalLetter"+i).required = false;
+            }
         }
     }
     function showEthicalApprovalLetterFunction(){
@@ -276,7 +278,9 @@
         for (i = countConsentForUseInResearchForm; i < 6; i ++) {
             $("#showConsentForUseInResearchForm"+i).hide();
             $("#hideConsentForUseInResearchForm"+i).hide();
-            document.getElementById("consentForUseInResearchForm"+i).required = false;
+            if (document.getElementById("consentForUseInResearchForm"+i)){
+                document.getElementById("consentForUseInResearchForm"+i).required = false;
+            }
         }
     }
     function showConsentForUseInResearchFormFunction(){
@@ -304,7 +308,9 @@
         for (i = countMTAOrCTA; i < 6; i ++) {
             $("#showMTAOrCTA"+i).hide();
             $("#hideMTAOrCTA"+i).hide();
-            document.getElementById("mTAOrCTA"+i).required = false;
+            if(document.getElementById("mTAOrCTA"+i)){
+                document.getElementById("mTAOrCTA"+i).required = false;
+            }
         }
     }
     function showMTAOrCTAFunction(){

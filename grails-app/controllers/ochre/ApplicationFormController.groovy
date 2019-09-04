@@ -58,6 +58,13 @@ class ApplicationFormController {
                 def ethicalApprovalLetter = new EthicalApprovalLetter()
                 ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
                         letter.originalFilename
+                if(params.ethicalApprovalLetterComplete == "Yes"){
+                    ethicalApproval?.ethicalApprovalLetterComplete = true
+                    ethicalApproval?.ethicalApprovalLetterPending = false
+                }else {
+                    ethicalApproval?.ethicalApprovalLetterComplete = false
+                    ethicalApproval?.ethicalApprovalLetterPending = true
+                }
                 def destinationFile = new File(ethicalApprovalLetter.letter)
                 try {
                     letter.transferTo(destinationFile)
@@ -78,6 +85,13 @@ class ApplicationFormController {
                 consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_For_Use_In_Research_Form_' + number + '_Application_'+ applicationForm.id + '_' +
                         form.originalFilename
                 def destinationFile = new File(consentForUseInResearchForm.form)
+                if(params.consentForUseInResearchFormComplete == 'Yes'){
+                    consentForUseInResearch?.consentForUseInResearchFormComplete = true
+                    consentForUseInResearch?.consentForUseInResearchFormPending = false
+                }else {
+                    consentForUseInResearch?.consentForUseInResearchFormComplete = false
+                    consentForUseInResearch?.consentForUseInResearchFormPending = true
+                }
                 try {
                     form.transferTo(destinationFile)
                     consentForUseInResearch.addToConsentForUseInResearchForms(consentForUseInResearchForm).save failOnError: true
@@ -96,6 +110,13 @@ class ApplicationFormController {
                 def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
                 copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + number + '_Application_'+ applicationForm.id + '_' +
                         copy.originalFilename
+                if(params.mTAOrCTAComplete == 'Yes'){
+                    mTAOrCTA?.mTAOrCTAComplete = true
+                    mTAOrCTA.mTAOrCTAPending = false
+                }else {
+                    mTAOrCTA?.mTAOrCTAComplete = false
+                    mTAOrCTA.mTAOrCTAPending = true
+                }
                 def destinationFile = new File(copyOfMTAOrCTA.copy)
                 try {
                     copy.transferTo(destinationFile)
@@ -105,6 +126,10 @@ class ApplicationFormController {
                     log.error(ex)
                 }
             }
+        }
+        if (applicationForm?.ethicalApproval?.ethicalApprovalLetterComplete && applicationForm?.consentForUseInResearch?.consentForUseInResearchFormComplete && applicationForm?.mTAOrCTA?.mTAOrCTAComplete){
+            applicationForm.applicationType = ApplicationType.findByApplicationTypeName('Submitted')
+            applicationForm.save failOnError: true
         }
         redirect(action: 'yourExistingApplications')
     }
@@ -472,7 +497,6 @@ class ApplicationFormController {
                 }
             }
 
-            println(params.sample.timePoint1)
             def sample1 = new Sample()
             sample1?.timePoint = params.sample.timePoint1
             sample1?.sampleFor = params.sample.sampleFor1
@@ -511,7 +535,6 @@ class ApplicationFormController {
     }
 
     def download() {
-
         def id = params.long('id')
         if (params.docomentType == 'ethicalApprovalLetter'){
             EthicalApprovalLetter ethicalApprovalLetterInstance = EthicalApprovalLetter.get(id)
@@ -574,21 +597,15 @@ class ApplicationFormController {
             outputStream.close()
             fileInputStream.close()
         }
+    }
 
-//        EthicalApprovalLetter ethicalApprovalLetterInstance = EthicalApprovalLetter.get(id)
-//        response.setContentType("APPLICATION/OCTET-STREAM")
-//        response.setHeader("Content-Disposition", "Attachment;Filename=\"${ethicalApprovalLetterInstance.letter}\"")
-//        def file = new File(ethicalApprovalLetterInstance.letter)
-//        def fileInputStream = new FileInputStream(file)
-//        def outputStream = response.getOutputStream()
-//        byte[] buffer = new byte[4096];
-//        int len;
-//        while ((len = fileInputStream.read(buffer)) > 0) {
-//            outputStream.write(buffer, 0, len);
-//        }
-//        outputStream.flush()
-//        outputStream.close()
-//        fileInputStream.close()
+    @Transactional
+    def updateStatus(){
+        def applicationForm = ApplicationForm.findById(params.long('applicationFormId'))
+        def applicationStatus = ApplicationType.findByApplicationTypeName(params.status)
+        applicationForm.applicationType = applicationStatus
+        applicationForm.save failOnError: true
+        redirect(action: 'show', params: [id: applicationForm.id])
     }
 
     @Transactional
