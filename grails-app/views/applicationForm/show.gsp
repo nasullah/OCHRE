@@ -16,7 +16,25 @@
     </div>
     <div style="margin-left: 30px;margin-right: 30px;">
     <div><center>Application: <b>${applicationForm?.id}</b></center></div>
-    <div><center>Status: <b>${applicationForm?.applicationType}</b></center></div>
+    <div style="color: green"><center>Status: <b>${applicationForm?.applicationType}</b></center></div>
+    <div>
+        <center>
+            <g:if test="${applicationForm.applicationType.applicationTypeName == 'Submitted'}">
+                <g:form action="updateStatus" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
+                    <g:hiddenField name="applicationFormId" value="${applicationForm.id}"/>
+                    <g:hiddenField name="status" value="OCHRe Committee Meeting"/>
+                    <button type="submit" class="btn btn-info"><span class="fa fa-users"></span> Assign to OCHRe Committee Meeting</button>
+                </g:form>
+            </g:if>
+            <g:elseif test="${applicationForm.applicationType.applicationTypeName == 'OCHRe Committee Meeting'}">
+                <g:form action="updateStatus" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
+                    <g:hiddenField name="applicationFormId" value="${applicationForm.id}"/>
+                    <g:hiddenField name="status" value="Application Approved"/>
+                    <button type="submit" class="btn btn-info"><span class="fa fa-check"></span> Approve Application</button>
+                </g:form>
+            </g:elseif>
+        </center>
+    </div>
     <div id="step-1">
     <g:form action="saveForm" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
     <div id="form-step-0" role="form" data-toggle="validator">
@@ -764,22 +782,6 @@
     </div>
     </div>
     <br>
-    <div>
-        <g:if test="${applicationForm.applicationType.applicationTypeName == 'Submitted'}">
-            <g:form action="updateStatus" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
-                <g:hiddenField name="applicationFormId" value="${applicationForm.id}"/>
-                <g:hiddenField name="status" value="OCHRe Committee Meeting"/>
-                <g:submitButton name="create" class="fas fa-users" value="Assign to OCHRe Committee Meeting" />
-            </g:form>
-        </g:if>
-        <g:elseif test="${applicationForm.applicationType.applicationTypeName == 'OCHRe Committee Meeting'}">
-            <g:form action="updateStatus" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
-                <g:hiddenField name="applicationFormId" value="${applicationForm.id}"/>
-                <g:hiddenField name="status" value="Application Approved"/>
-                <g:submitButton name="create" class="fas fa-users" value="Approve Application" />
-            </g:form>
-        </g:elseif>
-    </div>
     <br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">

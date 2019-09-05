@@ -36,6 +36,7 @@
             <li><a href="#"> 3<br /><small>Application Submitted</small></a></li>
             <li><a href="#"> 4<br /><small>OCHRe Committee Meeting</small></a></li>
             <li><a href="#"> 5<br /><small>Application Approved</small></a></li>
+            <li style="display: none"><a href="#"> 5<br /><small>Application Approved</small></a></li>
         </ul>
     </div>
 </div>

@@ -190,9 +190,9 @@ class ApplicationFormController {
             status = 2
         }else if(applicationType == 'Submitted'){
             status = 3
-        }else if(applicationType == 'Meeting'){
+        }else if(applicationType == 'OCHRe Committee Meeting'){
             status = 4
-        }else if(applicationType == 'Approved'){
+        }else if(applicationType == 'Application Approved'){
             status = 5
         }
         [status:status, applicationFormId:applicationFormId]
