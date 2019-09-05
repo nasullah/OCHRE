@@ -3,7 +3,6 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to OCHRe</title>
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
 <sec:ifNotLoggedIn>
@@ -105,7 +104,7 @@
                             <i class="fas fa-users"></i> OCHRe Committee Meeting
                         </div>
                         <div class="panel-body">
-                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Meeting']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'OCHRe Committee Meeting']"><i class="fas fa-list-alt"></i> Application List</g:link>
                         </div>
                     </div>
                 </div>
@@ -115,7 +114,7 @@
                             <i class="fas fa-calendar-check"></i> Approved
                         </div>
                         <div class="panel-body">
-                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Approved']"><i class="fas fa-list-alt"></i> Application List</g:link>
+                            <g:link controller="applicationForm" action="applicationList" params="[applicationType:'Application Approved']"><i class="fas fa-list-alt"></i> Application List</g:link>
                         </div>
                     </div>
                 </div>

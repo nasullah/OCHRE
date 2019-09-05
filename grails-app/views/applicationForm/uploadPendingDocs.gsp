@@ -4,15 +4,16 @@
     <meta  charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <asset:stylesheet src="smart_wizard_theme_arrows.css"/>
     <asset:stylesheet src="smart_wizard.css"/>
+    <asset:link rel="icon" href="ochre.jpg" type="image/x-ico" />
 </head>
 <body>
 <br>
 <h3><center>Upload Pending Documents For Application ${applicationForm?.id}</center></h3>
 <div class="container">
-    <a class="btn btn-primary btn-xs" href="/OCHRE" style="margin-left:20px;">&#171; Back to homepage</a>
+    <a class="btn btn-info btn-xs" href="/OCHRE" style="margin-left:20px;">&#171; Back to homepage</a>
     <hr>
     <g:uploadForm action="savePendingUpload" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
         <g:if test="${applicationForm?.ethicalApproval?.ethicalApprovalLetterPending}">
@@ -224,22 +225,19 @@
             <br>
         </g:if>
         <g:hiddenField name="applicationFormId" value="${applicationForm?.id}"/>
-        <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="Save" />
-        </fieldset>
+        <button id="test" type="submit" class="btn btn-info active"><span class="fa fa-save"></span> Save</button>
     </g:uploadForm>
 </div>
 <br>
 <br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include jQuery Validator plugin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
 
 
 <!-- Include SmartWizard JavaScript source -->
-<asset:javascript src="jquery.smartWizard.min.js"/>
 
 <script type="text/javascript">
+    $('#test').removeAttr('disabled', false);
     var countEthicalApprovalLetter = 2;
     setupEthicalApprovalLetter();
     function setupEthicalApprovalLetter(){
