@@ -121,11 +121,11 @@
 
 .sw-theme-arrows > ul.step-anchor > li.clickable > a:hover {
     color: #4285F4 !important;
-    background: #46b8da !important;
+    background: rgba(23, 162, 184, 0.41) !important;
 }
 
 .sw-theme-arrows > ul.step-anchor > li.active > a {
-    border-color: #17a2b8 !important;
+    border-color: #17a2b8;
     color: #fff !important;
     background: #17a2b8 !important;
 }
@@ -135,14 +135,14 @@
 }
 
 .sw-theme-arrows > ul.step-anchor > li.done > a {
-    border-color: #b1dfbb !important;
+    border-color: rgba(23, 162, 184, 0.41) !important;
  /*  #5cb85c */
     color: #fff !important;
-    background: #b1dfbb !important;
+    background: rgba(23, 162, 184, 0.40) !important;
 }
 
 .sw-theme-arrows > ul.step-anchor > li.done > a:after {
-    border-left: 30px solid #b1dfbb;
+    border-left: 30px solid rgba(23, 162, 184, 0.40);
  /* c3e6cb */;
 }
 
@@ -186,5 +186,5 @@
 /* Loader Custom Style */
 .sw-theme-arrows::before {
     border: 10px solid #f3f3f3;
-    border-top: 10px solid #5cb85c;
+    border-top: 10px solid rgba(23, 162, 184, 0.40);
 }

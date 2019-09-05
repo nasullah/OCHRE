@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div style="margin-left: 30px;margin-right: 30px;">
-    <h3 style="color: green"><center>Application: <b>${applicationForm?.id}</b></center></h3>
-    <h3 style="color: green"><center>Status: <b>${applicationForm?.applicationType}</b></center></h3><br>
+    <h3 style="color: #17a2b8"><center>Application: ${applicationForm?.id}</center></h3>
+    <h3 style="color: #17a2b8"><center>Status: ${applicationForm?.applicationType}</center></h3><br>
     <div>
         <center>
             <g:if test="${applicationForm.applicationType.applicationTypeName == 'Submitted'}">

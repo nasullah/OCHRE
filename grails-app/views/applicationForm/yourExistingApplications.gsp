@@ -26,7 +26,7 @@
 
             <g:sortableColumn property="applicationType" title="Application Status" />
 
-            <td>Action</td>
+            <g:sortableColumn property="applicationType" title="Action" />
 
         </tr>
         </thead>
