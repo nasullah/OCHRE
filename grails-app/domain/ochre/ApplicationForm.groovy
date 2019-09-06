@@ -7,6 +7,8 @@ class ApplicationForm {
         sponsorOrganisation type: "text"
         registrationOnPortfolioName type: "text"
         companyName type: "text"
+        clinicalTrialForm type: "text"
+        howMaterialUsed type: "text"
     }
     static hasMany = [samples:Sample]
     static auditable = true

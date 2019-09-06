@@ -48,22 +48,18 @@
                         <g:link class="nav-link" url="${createLink(uri: '/user')}"><i class="fas fa-list-alt"></i> User List</g:link>
                     </li>
                 </sec:ifAnyGranted>
-                <li class="nav-item">
-                    <g:link class="nav-link" controller="applicationForm" action="create"><i class="fas fa-plus-circle"></i> Submit New Application</g:link>
-                </li>
-                <li class="nav-item">
-                    <g:link class="nav-link" controller="applicationForm" action="yourExistingApplications"><i class="fas fa-list-alt"></i>  Track Existing Applications</g:link>
-                </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="applicationForm" action="create"><i class="fas fa-plus-circle"></i> Submit New Application</g:link>
+                    </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="applicationForm" action="yourExistingApplications"><i class="fas fa-list-alt"></i>  Track Existing Applications</g:link>
+                    </li>
                 <sec:ifNotLoggedIn>
-                    %{--<li class="nav-link">--}%
-                        %{--<g:form controller="login" action="auth">--}%
-                            %{--<g:link class="nav-link" controller="login" action="auth"><i class="fas fa-sign-in-alt"></i> Login</g:link>--}%
-                        %{--</g:form>--}%
-                    %{--</li>--}%
-                    <li class="nav-link">
-                        <g:form controller="login" action="auth">
-                            <g:link class="nav-link" controller="applicationForm" action="registration"><i class="fas fa-user-plus"></i> Create Login Details</g:link>
-                        </g:form>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="login" action="auth"><i class="fas fa-sign-in-alt"></i> Login</g:link>
+                    </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="applicationForm" action="registration"><i class="fas fa-user-plus"></i> Create Login Details</g:link>
                     </li>
                 </sec:ifNotLoggedIn>
                 <li class="nav-link">

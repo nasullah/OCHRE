@@ -52,6 +52,7 @@ dependencies {
     runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
     compile 'org.grails.plugins:audit-logging:2.0.6'
     compile 'org.grails.plugins:mail:2.0.0'
+    runtime 'mysql:mysql-connector-java:5.1.33'
 }
 
 bootRun {
