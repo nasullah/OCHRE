@@ -7,16 +7,16 @@ class BootStrap {
         environments {
             test {
                 createRoles()
-                createAdminUser("admin", "password", "support@example.com")
+                createAdminUser("admin@example.com", "password", "admin@example.com")
             }
             development {
                 createRoles()
-                createAdminUser("admin", "password", "support@example.com")
+                createAdminUser("admin@example.com", "password", "admin@example.com")
             }
 
             production {
                 createRoles()
-                createAdminUser("admin", "password", "support@example.com")
+                createAdminUser("admin@example.com", "password", "admin@example.com")
             }
         }
     }

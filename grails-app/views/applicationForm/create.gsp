@@ -87,7 +87,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="leadApplicant.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                            <input type='text' name='leadApplicant.emailAddress' id='leadApplicant.emailAddress' value="${applicationForm?.leadApplicant?.emailAddress}" placeholder='Enter Email Address' required>
+                                            <input type='email' name='leadApplicant.emailAddress' id='leadApplicant.emailAddress' value="${applicationForm?.leadApplicant?.emailAddress}" placeholder='Enter Email Address' required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="contactPerson.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                            <input type='text' name='contactPerson.emailAddress' id='contactPerson.emailAddress' value="${applicationForm?.contactPerson?.emailAddress}" placeholder='Enter Email Address' required>
+                                            <input type='email' name='contactPerson.emailAddress' id='contactPerson.emailAddress' value="${applicationForm?.contactPerson?.emailAddress}" placeholder='Enter Email Address' required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sampleRequestContact.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                            <input type='text' name='sampleRequestContact.emailAddress' id='sampleRequestContact.emailAddress' value="${applicationForm?.sampleRequestContact?.emailAddress}" placeholder='Enter Email Address' required="">
+                                            <input type='email' name='sampleRequestContact.emailAddress' id='sampleRequestContact.emailAddress' value="${applicationForm?.sampleRequestContact?.emailAddress}" placeholder='Enter Email Address' required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -248,7 +248,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="shippingDetails.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                            <input type='text' name='shippingDetails.emailAddress' id='shippingDetails.emailAddress' value="${applicationForm?.shippingDetails?.emailAddress}" placeholder='Enter Email Address'>
+                                            <input type='email' name='shippingDetails.emailAddress' id='shippingDetails.emailAddress' value="${applicationForm?.shippingDetails?.emailAddress}" placeholder='Enter Email Address'>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -331,7 +331,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="contactPersonQuotationFunding.emailAddress">Email Address <span style="color: red">*</span></label><br>
-                                <input type='text' name='contactPersonQuotationFunding.emailAddress' id='contactPersonQuotationFunding.emailAddress' value="${applicationForm?.contactPersonQuotationFunding?.emailAddress}" placeholder='Enter Email Address' required>
+                                <input type='email' name='contactPersonQuotationFunding.emailAddress' id='contactPersonQuotationFunding.emailAddress' value="${applicationForm?.contactPersonQuotationFunding?.emailAddress}" placeholder='Enter Email Address' required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

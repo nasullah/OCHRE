@@ -17,8 +17,8 @@
                 <h2>User registration</h2>
                 <table>
                     <tr>
-                        <td><label for="username">Email address</label></td>
-                        <td><input type="text" name="emailAddress" id="emailAddress" class='formLogin' size="20"/></td>
+                        <td><label for="emailAddress">Email address</label></td>
+                        <td><input type="email" name="emailAddress" id="emailAddress" class='formLogin' size="20"/></td>
                     </tr>
                     <tr>
                         <td><label for="password">Password</label></td>
