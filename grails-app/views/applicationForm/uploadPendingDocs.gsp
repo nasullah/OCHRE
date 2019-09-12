@@ -225,7 +225,7 @@
             <br>
         </g:if>
         <g:hiddenField name="applicationFormId" value="${applicationForm?.id}"/>
-        <button id="test" type="submit" class="btn btn-info active"><span class="fa fa-save"></span> Save</button>
+        <button type="submit" class="btn btn-info active"><span class="fa fa-save"></span> Save</button>
     </g:uploadForm>
 </div>
 <br>
@@ -237,7 +237,6 @@
 <!-- Include SmartWizard JavaScript source -->
 
 <script type="text/javascript">
-    $('#test').removeAttr('disabled', false);
     var countEthicalApprovalLetter = 2;
     setupEthicalApprovalLetter();
     function setupEthicalApprovalLetter(){

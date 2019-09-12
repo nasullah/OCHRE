@@ -11,7 +11,7 @@
     <div class="login-inner">
         <s2ui:form type='login' focus='username'>
             <div class="sign-in">
-                <h2><g:message code='spring.security.ui.login.signin'/></h2>
+                <h2>User login</h2>
                 <table>
                     <tr>
                         <td><label for="username"><label for="username">Email address</label></label></td>
@@ -33,7 +33,7 @@
                     <tr>
                         <td colspan='2'>
                             %{--<s2ui:linkButton elementId='register' controller='register' messageCode='spring.security.ui.login.register'/>--}%
-                            <g:submitButton name="login" value="Login" />
+                            <button type="submit" class="btn btn-info active"><span class="fa fa-sign-in-alt"></span> Login</button>
                         </td>
                     </tr>
                 </table>

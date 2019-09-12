@@ -59,7 +59,7 @@
                         <g:link class="nav-link" controller="login" action="auth"><i class="fas fa-sign-in-alt"></i> Login</g:link>
                     </li>
                     <li class="nav-item">
-                        <g:link class="nav-link" controller="applicationForm" action="registration"><i class="fas fa-user-plus"></i> Create Login Details</g:link>
+                        <g:link class="nav-link" controller="applicationForm" action="registration"><i class="fas fa-user-plus"></i> User Registration</g:link>
                     </li>
                 </sec:ifNotLoggedIn>
                 <li class="nav-link">

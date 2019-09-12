@@ -14,7 +14,7 @@
     <div class="login-inner">
         <g:form type='login' focus='username' controller="applicationForm" action="saveRegistration" role="form" method="post" accept-charset="utf-8">
             <div class="sign-in">
-                <h2>Registration</h2>
+                <h2>User registration</h2>
                 <table>
                     <tr>
                         <td><label for="username">Email address</label></td>
@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <td colspan='2'>
-                            <g:submitButton name="login" value="Register" />
+                            <button type="submit" class="btn btn-info active"><span class="fa fa-user-plus"></span> Register</button>
                         </td>
                     </tr>
                 </table>
