@@ -25,7 +25,7 @@
                         <td><input type="password" name="password" id="password" class="formLogin" size="20"/></td>
                     </tr>
                     <tr>
-                        <td><label for="password">Re-enter password</label></td>
+                        <td><label for="repeatPassword">Re-enter password</label></td>
                         <td><input type="password" name="repeatPassword" id="repeatPassword" class="formLogin" size="20"/></td>
                     </tr>
                     <tr>

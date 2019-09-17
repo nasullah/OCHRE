@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <asset:stylesheet src="smart_wizard_theme_arrows.css"/>
     <asset:stylesheet src="smart_wizard.css"/>
-    <asset:link rel="icon" href="ochre.jpg" type="image/x-ico" />
+    <asset:link rel="icon" href="ochre.png" type="image/x-ico" />
 </head>
 <body>
 <br>

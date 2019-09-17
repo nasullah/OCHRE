@@ -46,7 +46,6 @@ class ApplicationFormController {
         def applicationForm = ApplicationForm.findById(applicationFormId)
         def ethicalApproval = applicationForm?.ethicalApproval
         def consentForUseInResearch = applicationForm?.consentForUseInResearch
-        def randDApproval = applicationForm?.randDApproval
         def mTAOrCTA = applicationForm?.mTAOrCTA
 
         for (number in 1..5 ) {

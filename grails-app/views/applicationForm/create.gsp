@@ -8,7 +8,7 @@
 
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <asset:link rel="icon" href="ochre.jpg" type="image/x-ico" />
+    <asset:link rel="icon" href="ochre.png" type="image/x-ico" />
     <asset:stylesheet src="smart_wizard_theme_arrows.css"/>
     <asset:stylesheet src="smart_wizard.css"/>
 </head>
