@@ -594,7 +594,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="sampleSampleFor2">What is this sample for? <span style="color: red">*</span></label><br>
+                        <label for="sampleSampleFor2">What is this sample for?</label><br>
                         <g:select name="sample.sampleFor1" id="sampleSampleFor1"  from="['Eligibility/randomisation', 'Primary or secondary outcomes', 'Exploratory outcome only']" value="${applicationForm?.samples[0]?.sampleFor}" noSelection="['':'']" style="width:240px;height:30px;"/>
                     </div>
                 </div>
