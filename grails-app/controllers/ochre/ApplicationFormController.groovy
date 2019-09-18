@@ -48,6 +48,7 @@ class ApplicationFormController {
         def consentForUseInResearch = applicationForm?.consentForUseInResearch
         def mTAOrCTA = applicationForm?.mTAOrCTA
 
+
         for (number in 1..5 ) {
             def letter = request.getFile('ethicalApprovalLetter' + number )
             if(letter?.originalFilename){
@@ -55,8 +56,8 @@ class ApplicationFormController {
                     return
                 }
                 def ethicalApprovalLetter = new EthicalApprovalLetter()
-                ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
-                        letter.originalFilename
+                ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
+                         letter.originalFilename
                 if(params.ethicalApprovalLetterComplete == "Yes"){
                     ethicalApproval?.ethicalApprovalLetterComplete = true
                     ethicalApproval?.ethicalApprovalLetterPending = false
@@ -81,7 +82,7 @@ class ApplicationFormController {
                     return
                 }
                 def consentForUseInResearchForm = new ConsentForUseInResearchForms()
-                consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_For_Use_In_Research_Form_' + number + '_Application_'+ applicationForm.id + '_' +
+                consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_Form_For_Use_In_Research_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                         form.originalFilename
                 def destinationFile = new File(consentForUseInResearchForm.form)
                 if(params.consentForUseInResearchFormComplete == 'Yes'){
@@ -107,7 +108,7 @@ class ApplicationFormController {
                     return
                 }
                 def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
-                copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + number + '_Application_'+ applicationForm.id + '_' +
+                copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + UUID.randomUUID().toString() + '_Application_' +  applicationForm.id + '_' +
                         copy.originalFilename
                 if(params.mTAOrCTAComplete == 'Yes'){
                     mTAOrCTA?.mTAOrCTAComplete = true
@@ -372,7 +373,7 @@ class ApplicationFormController {
                             return
                         }
                         def ethicalApprovalLetter = new EthicalApprovalLetter()
-                        ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + number + '_Application_'+ applicationForm.id + '_' +
+                        ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                                 letter.originalFilename
                         def destinationFile = new File(ethicalApprovalLetter.letter)
                         try {
@@ -399,7 +400,7 @@ class ApplicationFormController {
                             return
                         }
                         def consentForUseInResearchForm = new ConsentForUseInResearchForms()
-                        consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_For_Use_In_Research_Form_' + number + '_Application_'+ applicationForm.id + '_' +
+                        consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_Form_For_Use_In_Research_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                                 form.originalFilename
                         def destinationFile = new File(consentForUseInResearchForm.form)
                         try {
@@ -427,7 +428,7 @@ class ApplicationFormController {
                             return
                         }
                         def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
-                        copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + number + '_Application_'+ applicationForm.id + '_' +
+                        copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + UUID.randomUUID().toString() + '_Application_' +  applicationForm.id + '_' +
                                 copy.originalFilename
                         def destinationFile = new File(copyOfMTAOrCTA.copy)
                         try {
@@ -485,7 +486,7 @@ class ApplicationFormController {
                 if (clinicalTrialForm?.empty) {
                     return
                 }
-                applicationForm?.clinicalTrialForm = grailsApplication.config.uploadFolder + 'Clinical_Trial_Form' + applicationForm.id + '_' +
+                applicationForm?.clinicalTrialForm = grailsApplication.config.uploadFolder + 'Clinical_Trial_Form_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                         clinicalTrialForm.originalFilename
                 def destinationFile = new File(applicationForm.clinicalTrialForm)
                 try {
