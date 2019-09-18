@@ -2,7 +2,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>OCHRe Application</title>
+    <g:if test="${applicationForm}">
+        <title>Application ${applicationForm.id}</title>
+    </g:if>
+    <g:else>
+        <title>New Application</title>
+    </g:else>
+
     <meta  charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

@@ -3,18 +3,13 @@
     <head>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
-        <title><g:message code="default.show.label" args="[entityName]" /></title>
+        <title>Application ${applicationForm.id}</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     </head>
     <body>
     <a href="#show-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-    <div class="nav" role="navigation">
-        <ul>
-            <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-        </ul>
-    </div>
     <div style="margin-left: 30px;margin-right: 30px;">
+    <br>
     <h3 style="color: #17a2b8"><center>Application: ${applicationForm?.id}</center></h3>
     <h3 style="color: #17a2b8"><center>Status: ${applicationForm?.applicationType}</center></h3><br>
     <div>
