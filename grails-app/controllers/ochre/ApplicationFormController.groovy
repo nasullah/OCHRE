@@ -11,6 +11,7 @@ class ApplicationFormController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def springSecurityService
+    def mailService
 
     @Secured(['ROLE_ADMIN'])
     def index(Integer max) {
@@ -339,6 +340,7 @@ class ApplicationFormController {
                 applicationForm?.randDApproval?.organisation = params.randDApproval.organisation
                 applicationForm?.randDApproval?.pid = params.randDApproval.pid
                 applicationForm?.randDApproval?.otherInformation = params.randDApproval.otherInformation
+                applicationForm?.registrationOnPortfolio = params.registrationOnPortfolio
                 applicationForm?.registrationOnPortfolioName = params.registrationOnPortfolioName
                 applicationForm?.sponsorOrganisation = params.sponsorOrganisation
                 applicationForm?.mTAArranged = params.mTAArranged
@@ -362,6 +364,7 @@ class ApplicationFormController {
                 randDApproval?.organisation = params.randDApproval.organisation
                 randDApproval?.pid = params.randDApproval.pid
                 randDApproval?.otherInformation = params.randDApproval.otherInformation
+                applicationForm?.registrationOnPortfolio = params.registrationOnPortfolio
                 applicationForm?.registrationOnPortfolioName = params.registrationOnPortfolioName
                 applicationForm?.sponsorOrganisation = params.sponsorOrganisation
                 applicationForm?.mTAArranged = params.mTAArranged
@@ -413,7 +416,7 @@ class ApplicationFormController {
                     }
                 }
                 randDApproval.save failOnError: true
-                if(params.mTAOrCTAComplete == 'Yes'){
+                if(params.mTAOrCTAComplete == 'Yes' || params.mTAArranged == 'No Needed'){
                     mTAOrCTA?.mTAOrCTAComplete = true
                     mTAOrCTA.mTAOrCTAPending = false
                 }else {
@@ -605,6 +608,11 @@ class ApplicationFormController {
         def applicationStatus = ApplicationType.findByApplicationTypeName(params.status)
         applicationForm.applicationType = applicationStatus
         applicationForm.save failOnError: true
+        mailService.sendMail {
+            to "admin@ox.ac.uk"
+            subject "Application " + applicationForm.id
+            text "You application has been approved"
+        }
         redirect(action: 'show', params: [id: applicationForm.id])
     }
 
