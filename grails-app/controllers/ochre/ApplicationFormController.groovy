@@ -53,9 +53,6 @@ class ApplicationFormController {
         for (number in 1..5 ) {
             def letter = request.getFile('ethicalApprovalLetter' + number )
             if(letter?.originalFilename){
-                if (letter?.empty) {
-                    return
-                }
                 def ethicalApprovalLetter = new EthicalApprovalLetter()
                 ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                          letter.originalFilename
@@ -71,17 +68,14 @@ class ApplicationFormController {
                     letter.transferTo(destinationFile)
                     ethicalApproval.addToEthicalApprovalLetter(ethicalApprovalLetter).save failOnError: true
                 }
-                catch (Exception ex) {
-                    log.error(ex)
+                catch (Exception e) {
+                    log.error "Error: ${e.message}", e
                 }
             }
         }
         for (number in 1..5 ) {
             def form = request.getFile('consentForUseInResearchForm' + number )
             if(form?.originalFilename){
-                if (form?.empty) {
-                    return
-                }
                 def consentForUseInResearchForm = new ConsentForUseInResearchForms()
                 consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_Form_For_Use_In_Research_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                         form.originalFilename
@@ -97,17 +91,14 @@ class ApplicationFormController {
                     form.transferTo(destinationFile)
                     consentForUseInResearch.addToConsentForUseInResearchForms(consentForUseInResearchForm).save failOnError: true
                 }
-                catch (Exception ex) {
-                    log.error(ex)
+                catch (Exception e) {
+                    log.error "Error: ${e.message}", e
                 }
             }
         }
         for (number in 1..5 ) {
             def copy = request.getFile('mTAOrCTA' + number )
             if(copy?.originalFilename){
-                if (copy?.empty) {
-                    return
-                }
                 def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
                 copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + UUID.randomUUID().toString() + '_Application_' +  applicationForm.id + '_' +
                         copy.originalFilename
@@ -123,8 +114,8 @@ class ApplicationFormController {
                     copy.transferTo(destinationFile)
                     mTAOrCTA.addToCopyOfMTAOrCTA(copyOfMTAOrCTA).save failOnError: true
                 }
-                catch (Exception ex) {
-                    log.error(ex)
+                catch (Exception e) {
+                    log.error "Error: ${e.message}", e
                 }
             }
         }
@@ -372,9 +363,6 @@ class ApplicationFormController {
                 for (number in 1..5 ) {
                     def letter = request.getFile('ethicalApprovalLetter' + number )
                     if(letter?.originalFilename){
-                        if (letter?.empty) {
-                            return
-                        }
                         def ethicalApprovalLetter = new EthicalApprovalLetter()
                         ethicalApprovalLetter.letter = grailsApplication.config.uploadFolder + 'Ethical_Approval_Letter_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                                 letter.originalFilename
@@ -399,9 +387,6 @@ class ApplicationFormController {
                 for (number in 1..5 ) {
                     def form = request.getFile('consentForUseInResearchForm' + number )
                     if(form?.originalFilename){
-                        if (form?.empty) {
-                            return
-                        }
                         def consentForUseInResearchForm = new ConsentForUseInResearchForms()
                         consentForUseInResearchForm.form = grailsApplication.config.uploadFolder + 'Consent_Form_For_Use_In_Research_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                                 form.originalFilename
@@ -427,9 +412,6 @@ class ApplicationFormController {
                 for (number in 1..5 ) {
                     def copy = request.getFile('mTAOrCTA' + number )
                     if(copy?.originalFilename){
-                        if (copy?.empty) {
-                            return
-                        }
                         def copyOfMTAOrCTA = new CopyOfMTAOrCTA()
                         copyOfMTAOrCTA.copy = grailsApplication.config.uploadFolder + 'Copy_Of_MTA_Or_CTA_' + UUID.randomUUID().toString() + '_Application_' +  applicationForm.id + '_' +
                                 copy.originalFilename
@@ -486,9 +468,6 @@ class ApplicationFormController {
 
             def clinicalTrialForm = request.getFile('clinicalTrialForm')
             if (clinicalTrialForm?.originalFilename){
-                if (clinicalTrialForm?.empty) {
-                    return
-                }
                 applicationForm?.clinicalTrialForm = grailsApplication.config.uploadFolder + 'Clinical_Trial_Form_' + UUID.randomUUID().toString() + '_Application_' + applicationForm.id + '_' +
                         clinicalTrialForm.originalFilename
                 def destinationFile = new File(applicationForm.clinicalTrialForm)
@@ -608,11 +587,12 @@ class ApplicationFormController {
         def applicationStatus = ApplicationType.findByApplicationTypeName(params.status)
         applicationForm.applicationType = applicationStatus
         applicationForm.save failOnError: true
-        mailService.sendMail {
-            to "admin@ox.ac.uk"
-            subject "Application " + applicationForm.id
-            text "You application has been approved"
-        }
+//        mailService.sendMail {
+//            to "nasullah.khalidalham@eng.ox.ac.uk"
+//            subject "Application " + applicationForm.id
+//            text "You application has been approved"
+//        }
+//        flash.message = "Email sent to user at " + new Date()
         redirect(action: 'show', params: [id: applicationForm.id])
     }
 
