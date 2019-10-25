@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/OCHRE/"><i class="fas fa-home"></i> Home</a>
                 </li>
+                <li class="nav-item">
+                    <g:link class="nav-link" url="${assetPath(src: 'ochre-qsg.pdf')}" target="_blank"><i class="fas fa-info-circle"></i> Quick Start</g:link>
+                </li>
                 <sec:ifLoggedIn>
                     %{--<li class="nav-item">--}%
                         %{--<g:if test="${sec?.username()?.toString()?.contains('.')}">--}%

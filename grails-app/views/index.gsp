@@ -38,7 +38,7 @@
                 If you do not complete the form properly, you will be notified to go back and make adjustments before we will accept a submitted application.  This will delay getting the approval for the trial.
             </p>
             <p align="justify">
-                A helpful guide to using this online website and application can be downloaded here.
+                A helpful guide to using this online website and application can be downloaded <a href="${assetPath(src: 'ochre-qsg.pdf')}" target="_blank">here</a>.
             </p>
             <p align="justify">
                 If you have any questions, please contact us using the details below:
